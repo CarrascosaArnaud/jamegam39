@@ -1,9 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3lgevswqjm2g"]
+[gd_scene load_steps=4 format=3 uid="uid://c3lgevswqjm2g"]
 
 [ext_resource type="PackedScene" uid="uid://dnvjyjpwj4qao" path="res://scenes/player.tscn" id="2_1mq22"]
+[ext_resource type="PackedScene" uid="uid://pkiiaiycivlg" path="res://scenes/enemy_patterns/straight_line.tscn" id="2_cj5k6"]
+[ext_resource type="PackedScene" uid="uid://cr4uh4usbnc1" path="res://scenes/enemy_patterns/follow_path_circle_forward.tscn" id="3_nne3m"]
 
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("2_1mq22")]
 position = Vector2(583, 351)
 scale = Vector2(0.25, 0.25)
+
+[node name="FollowPathCircleForward" parent="." instance=ExtResource("3_nne3m")]
+position = Vector2(728, -23)
+speed = 200
+
+[node name="EnemyStraight" parent="." instance=ExtResource("2_cj5k6")]
+position = Vector2(252, 109)
