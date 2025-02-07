@@ -16,8 +16,6 @@ func _physics_process(delta: float) -> void:
 		
 	look_at(get_global_mouse_position())
 	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_vector(\"Left\", \"Right\", \"Up\", \"Down\")
 	
 	if direction:
@@ -26,8 +24,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 		
-	if Input.is_action_just_pressed(\"Attack\"):
-		velocity = Vector2(DisplayServer.mouse_get_position())
+	if Input.is_action_just_pressed(\"Action\"):
+		#Mettre un CD (timer)
+		#Mettre un indicateur visuel
+		global_position = get_global_mouse_position()
 		
 	move_and_slide()
 	
