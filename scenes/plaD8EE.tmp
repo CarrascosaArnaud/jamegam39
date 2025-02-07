@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnvjyjpwj4qao"]
+
+[ext_resource type="PackedScene" uid="uid://mcdmbi5qjthi" path="res://scenes/components/hitbox_component.tscn" id="2_agsip"]
+[ext_resource type="PackedScene" uid="uid://m2a3i1mwfuio" path="res://scenes/components/health_component.tscn" id="3_8wfff"]
+[ext_resource type="Texture2D" uid="uid://dvqktyxiar525" path="res://assets/image/player.png" id="3_b8fra"]
+
+[sub_resource type="GDScript" id="GDScript_quhyo"]
+script/source = "extends CharacterBody2D
+
+signal health_depleted
+
+var health = 0.0
+const SPEED = 1500
+const ACCELERATION = 150 #150
+const FRIC = 400 #400
+
+func accelerate(direction: Vector2):
+	velocity = velocity.move_toward(SPEED * direction, ACCELERATION)
+
+func apply_friction():
+	velocity = velocity.move_toward(Vector2.ZERO, FRIC)
+
+func _physics_process(delta):
+	var direction = Input.get_vector(\"move_left\",\"move_right\",\"move_up\",\"move_down\")
+	if direction != Vector2.ZERO:
+		accelerate(direction) #velocity = direction * SPEED
+		move_and_slide()
+		if(velocity > Vector2(0.5,-0.5) || velocity > Vector2(-0.5,0.5)):
+			$Goofyboi.play_run_animation() 
+		else:
+			$Goofyboi.play_acceleration_animation()
+	else:
+		apply_friction()
+		$Goofyboi.play_idle_animation()
+	
+	#if (velocity.length() > 0.0):
+		#$Goofyboi.play_run_animation() # %HappyBoo == get_node(\"HappyBoo\") peu importe le chemin
+	#elif(direction.x < SPEED):
+		#$Goofyboi.play_acceleration_animation()
+
+	const DAMAGE_RATE = 5.0
+	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
+	if overlapping_mobs.size() > 0:
+		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
+		%ProgressBar.value = health
+		#%ProgressBar.max_value = health #pv max
+		if health <= 0.0:
+			health_depleted.emit()
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k7snd"]
+radius = 156.08
+
+[node name="Player" type="CharacterBody2D"]
+script = SubResource("GDScript_quhyo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_b8fra")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k7snd")
+
+[node name="HitboxComponent" parent="CollisionShape2D" node_paths=PackedStringArray("healthComponent") instance=ExtResource("2_agsip")]
+healthComponent = NodePath("../../HealthComponent")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_8wfff")]
+MAX_HEALTH = 10.0
