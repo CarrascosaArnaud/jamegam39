@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwu3cqnltmlyx"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_tpd0p"]
+[ext_resource type="Texture2D" uid="uid://dg1y82t7yug7c" path="res://assets/image/ennemi.png" id="1_xr5xd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xfnrh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xr5xd")
+}],
+"loop": true,
+"name": &"standby",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_meehk"]
+radius = 139.0
+height = 312.0
+
+[node name="Enemy" type="Area2D"]
+script = ExtResource("1_tpd0p")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xfnrh")
+animation = &"standby"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_meehk")

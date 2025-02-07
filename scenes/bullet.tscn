@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dr0peh3q051p0"]
+
+[ext_resource type="Texture2D" uid="uid://d03cs23gp3esp" path="res://assets/image/balle.png" id="1_1dspb"]
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_fktp0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xfnrh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1dspb")
+}],
+"loop": true,
+"name": &"standby",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_meehk"]
+radius = 63.0
+height = 152.0
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_fktp0")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xfnrh")
+animation = &"standby"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_meehk")
