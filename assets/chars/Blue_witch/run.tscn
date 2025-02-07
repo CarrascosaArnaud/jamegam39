@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://is4xdg5tnygd"]
+
+[ext_resource type="Texture2D" uid="uid://bch8v3702x6yb" path="res://assets/chars/Blue_witch/B_witch_run.png" id="1_l6hdk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e5wi"]
+atlas = ExtResource("1_l6hdk")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3n0yi"]
+atlas = ExtResource("1_l6hdk")
+region = Rect2(0, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlul0"]
+atlas = ExtResource("1_l6hdk")
+region = Rect2(0, 96, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yixje"]
+atlas = ExtResource("1_l6hdk")
+region = Rect2(0, 144, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0n1x"]
+atlas = ExtResource("1_l6hdk")
+region = Rect2(0, 192, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2nbl"]
+atlas = ExtResource("1_l6hdk")
+region = Rect2(0, 240, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsr2i"]
+atlas = ExtResource("1_l6hdk")
+region = Rect2(0, 288, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mibr3"]
+atlas = ExtResource("1_l6hdk")
+region = Rect2(0, 336, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g51sx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e5wi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3n0yi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlul0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yixje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0n1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2nbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsr2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mibr3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_g51sx")
+frame_progress = 0.400733

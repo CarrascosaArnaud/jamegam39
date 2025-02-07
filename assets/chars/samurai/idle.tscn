@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://ch5etndt42qcp"]
+
+[ext_resource type="Texture2D" uid="uid://cdd8pbos6jf5w" path="res://assets/chars/FREE_Samurai 2D Pixel Art v1.2/Sprites/IDLE.png" id="1_ep02o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7kat"]
+atlas = ExtResource("1_ep02o")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rt1l"]
+atlas = ExtResource("1_ep02o")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sdx4"]
+atlas = ExtResource("1_ep02o")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gotj"]
+atlas = ExtResource("1_ep02o")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u07vu"]
+atlas = ExtResource("1_ep02o")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i8vr"]
+atlas = ExtResource("1_ep02o")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxf3v"]
+atlas = ExtResource("1_ep02o")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy5g7"]
+atlas = ExtResource("1_ep02o")
+region = Rect2(672, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6qmo"]
+atlas = ExtResource("1_ep02o")
+region = Rect2(768, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lb0g"]
+atlas = ExtResource("1_ep02o")
+region = Rect2(864, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n5n0h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7kat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rt1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sdx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gotj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u07vu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0i8vr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxf3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cy5g7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6qmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lb0g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+position = Vector2(-5, -30)
+sprite_frames = SubResource("SpriteFrames_n5n0h")
+frame_progress = 0.273451
