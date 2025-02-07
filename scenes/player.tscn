@@ -34,8 +34,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 
+@onready var coll_shape_length: float = get_node(\"CollisionShape2D\").shape.radius * scale.length()
+
 func shoot():
-	pass
+	owner.add_child(Bullet.shoot(
+		global_position.move_toward(get_global_mouse_position(),coll_shape_length),
+		 get_global_mouse_position(), 25))
+	
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k7snd"]
