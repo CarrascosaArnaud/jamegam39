@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://pkiiaiycivlg"]
+
+[ext_resource type="Texture2D" uid="uid://dpdqqtj1m7vh4" path="res://assets/SpaceShooter/Ships/spaceShips_001.png" id="1_u4npn"]
+
+[sub_resource type="Curve2D" id="Curve2D_m4cpe"]
+
+[node name="EnemyWithoutBullet" type="Node2D"]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_m4cpe")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+
+[node name="Sprite" type="Sprite2D" parent="Path2D/PathFollow2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_u4npn")
