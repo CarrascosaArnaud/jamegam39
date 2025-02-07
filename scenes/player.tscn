@@ -7,10 +7,7 @@
 [sub_resource type="GDScript" id="GDScript_quhyo"]
 script/source = "extends CharacterBody2D
 
-
 const SPEED = 3000.0
-
-
 
 func _physics_process(delta: float) -> void:
 		
@@ -24,13 +21,17 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 		
+	move_and_slide()
+
 	if Input.is_action_just_pressed(\"Action\"):
 		#Mettre un CD (timer)
 		#Mettre un indicateur visuel
 		global_position = get_global_mouse_position()
-		
-	move_and_slide()
-	
+		#var tween = create_tween()
+		#tween.tween_property(self, \"global_position\", get_global_mouse_position(), 0.) 
+
+	if Input.is_action_just_pressed(\"Attack\"):
+		pass
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k7snd"]
