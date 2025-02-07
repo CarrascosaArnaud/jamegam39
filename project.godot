@@ -15,9 +15,10 @@ run/main_scene="res://scenes/world.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
-[display]
+[editor_plugins]
 
 window/stretch/mode="viewport"
+enabled=PackedStringArray("res://addons/PerfBullets/plugin.cfg")
 
 [input]
 
