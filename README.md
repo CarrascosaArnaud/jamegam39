@@ -1,2 +1,3 @@
-# jamegam39
- 
+# Mini JameGam39
+
+## Yanis' fanclub

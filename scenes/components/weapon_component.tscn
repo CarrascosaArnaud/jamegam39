@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://brfh6x1mxv1io"]
+
+[ext_resource type="Script" path="res://scripts/components/weapon_component.gd" id="1_fh5if"]
+
+[node name="WeaponComponent" type="Node2D"]
+script = ExtResource("1_fh5if")
