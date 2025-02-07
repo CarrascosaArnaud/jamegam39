@@ -29,8 +29,13 @@ func _physics_process(delta: float) -> void:
 		#Mettre un indicateur visuel
 		global_position = get_global_mouse_position()
 		
+	if Input.is_action_just_pressed(\"Attack\"):
+		shoot()
 	move_and_slide()
 	
+
+func shoot():
+	pass
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k7snd"]
