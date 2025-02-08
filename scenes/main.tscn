@@ -41,13 +41,12 @@ func _on_menu_start_game():
 func _on_enemy_timer_timeout():
 	var enemy_spawn_location = $EnemyPath/EnemyPathSpawn
 	enemy_spawn_location.progress_ratio = randf()
-	get_child(5).generate_random_enemy()
-	#enemy.position = enemy_spawn_location.position
+	get_child(5).generate_random_enemy(enemy_spawn_location.position)
 "
 
-[sub_resource type="Curve2D" id="Curve2D_yccna"]
+[sub_resource type="Curve2D" id="Curve2D_i7u81"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1922, 0, 0, 0, 0, 0, 1920, 1080, 0, 0, 0, 0, 0, 1080, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1920, 0)
+"points": PackedVector2Array(0, 0, 0, 0, -8, -8, 0, 0, 0, 0, 1928, -8, 0, 0, 0, 0, 1928, 1088, 0, 0, 0, 0, -8, 1088, 0, 0, 0, 0, -8, -8)
 }
 point_count = 5
 
@@ -67,12 +66,10 @@ visible = false
 position = Vector2(941, 819)
 
 [node name="EnemyPath" type="Path2D" parent="."]
-scale = Vector2(0.998959, 1)
-curve = SubResource("Curve2D_yccna")
+curve = SubResource("Curve2D_i7u81")
 
 [node name="EnemyPathSpawn" type="PathFollow2D" parent="EnemyPath"]
-position = Vector2(1922, 0)
-rotation = 1.57265
+position = Vector2(-8, -8)
 
 [node name="EnemyBuilder" parent="." instance=ExtResource("3_v4had")]
 
