@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 	
 	life_update.emit($HealthComponent.health * 10)
 
-@onready var coll_shape_length: float = get_node(\"CollisionShape2D\").shape.radius 
+@onready var coll_shape_length: float = get_node(\"HitboxComponent/CollisionShape2D\").shape.radius 
 
 func shoot():
 	if shooting_cooldown <= 0 and self.is_visible():
@@ -67,6 +67,15 @@ func start(pos):
 	position = pos
 	rotation = 0
 	show()
+
+
+func _on_hitbox_component_area_entered(area):
+	print(area)
+	print(\"area\")
+
+
+func _on_hitbox_component_body_entered(body):
+	print(\"body\")
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k7snd"]
@@ -80,11 +89,15 @@ rotation = 1.5708
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("1_cjqx6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_k7snd")
-
-[node name="HitboxComponent" parent="CollisionShape2D" node_paths=PackedStringArray("healthComponent") instance=ExtResource("2_agsip")]
-healthComponent = NodePath("../../HealthComponent")
-
 [node name="HealthComponent" parent="." instance=ExtResource("3_8wfff")]
 MAX_HEALTH = 10.0
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("2_agsip")]
+collision_mask = 6
+healthComponent = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_k7snd")
+
+[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
+[connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]
