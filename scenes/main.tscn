@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://kxavomltxyti"]
+
+[ext_resource type="PackedScene" uid="uid://b4k0a3wk2rowb" path="res://scenes/menu.tscn" id="1_0sxyr"]
+[ext_resource type="PackedScene" uid="uid://dk6vkqorptuc5" path="res://scenes/hud.tscn" id="2_dl72a"]
+[ext_resource type="PackedScene" uid="uid://dnvjyjpwj4qao" path="res://scenes/player.tscn" id="2_yxbxu"]
+[ext_resource type="PackedScene" uid="uid://cm2k5f2q1p0si" path="res://scenes/enemyBuilder.tscn" id="3_v4had"]
+
+[sub_resource type="GDScript" id="GDScript_36wy4"]
+script/source = "extends Node
+
+var score
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func game_over():
+	pass
+
+func new_game():
+	get_child(0).hide()
+	get_child(1).show()
+	score = 0
+	$Player.start($StartPosition.position)
+	print($Player/HealthComponent.health)
+	$EnemyTimer.start()
+
+	
+	
+
+
+func _on_menu_start_game():
+	new_game()
+
+
+func _on_enemy_timer_timeout():
+	var enemy_spawn_location = $EnemyPath/EnemyPathSpawn
+	enemy_spawn_location.progress_ratio = randf()
+	get_child(5).generate_random_enemy(enemy_spawn_location.position)
+"
+
+[sub_resource type="Curve2D" id="Curve2D_i7u81"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -8, -8, 0, 0, 0, 0, 1928, -8, 0, 0, 0, 0, 1928, 1088, 0, 0, 0, 0, -8, 1088, 0, 0, 0, 0, -8, -8)
+}
+point_count = 5
+
+[node name="Main" type="Node"]
+script = SubResource("GDScript_36wy4")
+
+[node name="Menu" parent="." instance=ExtResource("1_0sxyr")]
+
+[node name="HUD" parent="." instance=ExtResource("2_dl72a")]
+visible = false
+z_index = 1
+
+[node name="Player" parent="." instance=ExtResource("2_yxbxu")]
+visible = false
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(941, 819)
+
+[node name="EnemyPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_i7u81")
+
+[node name="EnemyPathSpawn" type="PathFollow2D" parent="EnemyPath"]
+position = Vector2(-8, -8)
+
+[node name="EnemyBuilder" parent="." instance=ExtResource("3_v4had")]
+
+[node name="EnemyTimer" type="Timer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+
+[connection signal="start_game" from="Menu" to="." method="_on_menu_start_game"]
+[connection signal="life_update" from="Player" to="HUD" method="_on_player_life_update"]
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]

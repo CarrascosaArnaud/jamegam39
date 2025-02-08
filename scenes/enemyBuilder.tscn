@@ -1,0 +1,17 @@
+[gd_scene load_steps=9 format=3 uid="uid://cm2k5f2q1p0si"]
+
+[ext_resource type="Script" path="res://scripts/components/enemy/enemy_builder.gd" id="1_uhn2w"]
+[ext_resource type="PackedScene" uid="uid://cr4uh4usbnc1" path="res://scenes/enemy_patterns/follow_path_circle_forward.tscn" id="2_kylbr"]
+[ext_resource type="PackedScene" uid="uid://pkiiaiycivlg" path="res://scenes/enemy_patterns/straight_line.tscn" id="3_eosx4"]
+[ext_resource type="PackedScene" uid="uid://uh6571fgaop7" path="res://scenes/enemy_patterns/bouncy_pattern.tscn" id="4_qpnfn"]
+[ext_resource type="PackedScene" uid="uid://c3yarm6een1xw" path="res://scenes/enemy_patterns/shooting/no_pattern.tscn" id="7_gixw8"]
+[ext_resource type="Texture2D" uid="uid://bkkgqxa4210hi" path="res://assets/Enemies/spaceShips_001.png" id="7_r44pu"]
+[ext_resource type="Texture2D" uid="uid://etrg3tmm8iyx" path="res://assets/Enemies/spaceShips_002.png" id="8_ak0bn"]
+[ext_resource type="Texture2D" uid="uid://dvcxyh8p7n50x" path="res://assets/Enemies/spaceShips_003.png" id="10_gqnb1"]
+
+[node name="EnemyBuilder" type="Node2D"]
+position = Vector2(103, 78)
+script = ExtResource("1_uhn2w")
+patterns = Array[PackedScene]([ExtResource("2_kylbr"), ExtResource("3_eosx4"), ExtResource("4_qpnfn")])
+weapons = Array[PackedScene]([ExtResource("7_gixw8")])
+textures = Array[Texture2D]([ExtResource("7_r44pu"), ExtResource("8_ak0bn"), ExtResource("10_gqnb1")])
