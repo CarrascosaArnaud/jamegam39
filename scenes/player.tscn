@@ -7,9 +7,10 @@
 [sub_resource type="GDScript" id="GDScript_quhyo"]
 script/source = "extends CharacterBody2D
 
-const SPEED = 3000.0
-var shooting_speed = 0.3
+const SPEED = 2500.0
+var fire_rate = 0.3
 var shooting_cooldown = 0
+var bullet_speed = 2500
 var screen_size
 
 func _ready():
@@ -38,7 +39,7 @@ func _physics_process(delta: float) -> void:
 		#var tween = create_tween()
 		#tween.tween_property(self, \"global_position\", get_global_mouse_position(), 0.) 
 
-	if Input.is_action_just_pressed(\"Attack\"):
+	if Input.is_action_pressed(\"Attack\"):
 		shoot()
 
 	position.x = clamp(position.x, 0, screen_size.x)
@@ -48,8 +49,8 @@ func _physics_process(delta: float) -> void:
 
 func shoot():
 	if shooting_cooldown <= 0:
-		owner.add_child(Bullet.shoot(global_position, get_global_mouse_position(), 25, coll_shape_length))
-		shooting_cooldown = shooting_speed
+		owner.add_child(Bullet.shoot(global_position, get_global_mouse_position(), bullet_speed, coll_shape_length))
+		shooting_cooldown = fire_rate
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k7snd"]

@@ -3,4 +3,4 @@ extends Node2D
 @onready var spawner = $Spawner
 
 func _ready() -> void:
-	spawner.trackedNode = get_parent().get_node("Player")
+	spawner.trackedNode = get_node("res://scenes/world.tscn").find_child("Player")

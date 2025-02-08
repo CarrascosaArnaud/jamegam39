@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bdx2pu10eplfa"]
 
-[ext_resource type="Script" path="res://player_tracker_component.gd" id="1_k7wrv"]
-[ext_resource type="Texture2D" uid="uid://xn8hgfqcshgq" path="res://assets/SpaceShooter/Missiles/spaceMissiles_001.png" id="1_x8sho"]
+[ext_resource type="Script" path="res://player_tracker_component.gd" id="1_6xink"]
+[ext_resource type="Texture2D" uid="uid://xn8hgfqcshgq" path="res://assets/SpaceShooter/Missiles/spaceMissiles_001.png" id="2_jvkyn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a7l84"]
 
@@ -10,7 +10,7 @@ initialSpeed = 300.0
 _shape = SubResource("CircleShape2D_a7l84")
 
 [node name="Shotgun pattern" type="Node2D"]
-script = ExtResource("1_k7wrv")
+script = ExtResource("1_6xink")
 
 [node name="Spawner" type="Spawner" parent="." node_paths=PackedStringArray("trackedNode")]
 bulletType = SubResource("BulletType_b500l")
@@ -23,4 +23,4 @@ startTowardPlayer = true
 staysTowardPlayer = true
 offsetTowardPlayer = -45.0
 textureRotation = 270.0
-texture = ExtResource("1_x8sho")
+texture = ExtResource("2_jvkyn")

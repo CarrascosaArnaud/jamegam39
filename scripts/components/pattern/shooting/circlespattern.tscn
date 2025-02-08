@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://jvttcvqmw1qh"]
 
-[ext_resource type="Texture2D" uid="uid://xn8hgfqcshgq" path="res://assets/SpaceShooter/Missiles/spaceMissiles_001.png" id="1_4fnbj"]
+[ext_resource type="Texture2D" uid="uid://xn8hgfqcshgq" path="res://assets/SpaceShooter/Missiles/spaceMissiles_001.png" id="1_1my0i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fvglp"]
 
@@ -21,4 +21,4 @@ spinRate = 10.0
 maxSpin = 10.0
 minSpin = -10.0
 textureRotation = 270.0
-texture = ExtResource("1_4fnbj")
+texture = ExtResource("1_1my0i")

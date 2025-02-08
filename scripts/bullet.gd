@@ -21,7 +21,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	translate(velocity)
+	translate(velocity * delta)
 
 func _area_entered(area):
 	print(area)
