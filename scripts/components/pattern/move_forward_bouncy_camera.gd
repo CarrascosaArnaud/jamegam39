@@ -4,12 +4,11 @@ extends Enemy
 @export var direction : Vector2 = Vector2(0, 1)
 @export var follow_rotation : bool = true
 
-var top_left
-var bottom_right
 var state_bounce_x = null
 var state_bounce_y = null
 
 func _ready() -> void:
+	super()
 	var camera = get_viewport().get_camera_2d()
 	var viewport_rect = camera.get_viewport_rect()
 	
@@ -19,6 +18,7 @@ func _ready() -> void:
 	direction = direction.normalized()
 
 func _process(delta: float) -> void:
+	super(delta)
 	self.linear_velocity = direction * speed * delta * 100
 	if (follow_rotation && spriteContainer != null):
 		spriteContainer.rotation = atan2(-direction.x, direction.y)

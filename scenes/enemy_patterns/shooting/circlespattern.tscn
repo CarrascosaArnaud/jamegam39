@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://jvttcvqmw1qh"]
+[gd_scene load_steps=6 format=3 uid="uid://jvttcvqmw1qh"]
 
 [ext_resource type="Texture2D" uid="uid://xn8hgfqcshgq" path="res://assets/SpaceShooter/Missiles/spaceMissiles_001.png" id="1_1my0i"]
+[ext_resource type="Script" path="res://scripts/components/shooting_pattern.gd" id="1_af748"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0lxbf"]
 
@@ -10,7 +11,24 @@ _shape = SubResource("CircleShape2D_0lxbf")
 acceleration = -100.0
 maxLifetime = 1.0
 
-[node name="CirclePattern" type="Spawner"]
+[sub_resource type="GDScript" id="GDScript_jr8yb"]
+script/source = "extends Spawner
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="CirclePattern" type="Node2D"]
+script = ExtResource("1_af748")
+
+[node name="Spawner" type="Spawner" parent="."]
 bulletType = SubResource("BulletType_3cqvv")
 fireRate = 0.5
 bulletsPerRadius = 10
@@ -20,3 +38,4 @@ maxSpin = 10.0
 minSpin = -10.0
 textureRotation = 270.0
 texture = ExtResource("1_1my0i")
+script = SubResource("GDScript_jr8yb")

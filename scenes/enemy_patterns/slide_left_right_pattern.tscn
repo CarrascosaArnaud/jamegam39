@@ -1,20 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://cr4uh4usbnc1"]
+[gd_scene load_steps=5 format=3 uid="uid://bu1qiqgd3yqu7"]
 
-[ext_resource type="Script" path="res://scripts/components/pattern/follow_path_2D.gd" id="1_k5rrp"]
-[ext_resource type="Texture2D" uid="uid://bkkgqxa4210hi" path="res://assets/Enemies/spaceShips_001.png" id="2_18yj4"]
+[ext_resource type="Script" path="res://scripts/components/pattern/follow_path_2D.gd" id="1_13i2l"]
+[ext_resource type="Texture2D" uid="uid://bkkgqxa4210hi" path="res://assets/Enemies/spaceShips_001.png" id="2_jo6x7"]
 
 [sub_resource type="Curve2D" id="Curve2D_m4cpe"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, -100, 0, 100, -100, 100, 0, 0, 0, 0, 0, 200, 0, 65, 0, -45, 65, 137.5, 0, 0, 0, 0, 0, 100)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 65, 80, -65, -90, -250, -50, -230.566, -6.29961, 65, 0, 0, 100, 0, 30, 50, 25, 250, 50, 65, 0, 0, 0, 0, 200)
 }
 point_count = 5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ik58"]
 radius = 94.0213
 
-[node name="PatternCircle" type="Path2D"]
+[node name="PatternSlideLeftRight" type="Path2D"]
 curve = SubResource("Curve2D_m4cpe")
-script = ExtResource("1_k5rrp")
+script = ExtResource("1_13i2l")
 speed = 350
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
@@ -25,7 +25,7 @@ loop = false
 [node name="Sprite" type="Sprite2D" parent="PathFollow2D"]
 rotation = -2.35619
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_18yj4")
+texture = ExtResource("2_jo6x7")
 
 [node name="Area2D" type="Area2D" parent="PathFollow2D"]
 collision_layer = 2

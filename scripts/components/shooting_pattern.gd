@@ -1,0 +1,2 @@
+class_name ShootingPattern
+extends Node2D

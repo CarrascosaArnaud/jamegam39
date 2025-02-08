@@ -17,6 +17,7 @@ func load_player(texture: Texture2D, weapon: PackedScene, direction: Vector2):
 	super(texture, weapon, direction)
 
 func _process(delta: float) -> void:
+	super(delta)
 	path_follow.progress += speed * delta;
 	weaponInstance.position = path_follow.position
 	if (path_follow.progress_ratio >= 1.0):
