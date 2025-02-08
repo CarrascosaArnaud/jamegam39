@@ -1,0 +1,202 @@
+[gd_scene load_steps=2 format=3 uid="uid://w8x1ls76hkdt"]
+
+[sub_resource type="GDScript" id="GDScript_eirpq"]
+script/source = "extends CanvasLayer
+
+@onready var LeftInput = $VBoxContainer/TabContainer/Controls/GridContainer/LeftButton as Button
+@onready var RightInput = $VBoxContainer/TabContainer/Controls/GridContainer/RightButton as Button
+@onready var UpInput = $VBoxContainer/TabContainer/Controls/GridContainer/UpButton as Button
+@onready var DownInput = $VBoxContainer/TabContainer/Controls/GridContainer/DownButton as Button
+@onready var AttackInput = $VBoxContainer/TabContainer/Controls/GridContainer/AttackButton as Button
+@onready var ActionInput = $VBoxContainer/TabContainer/Controls/GridContainer/ActionButton as Button
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	var sting = InputMap.action_get_events(\"Left\")[0].as_text()
+	LeftInput.text = sting.replace(\"(Physical)\", \"\")
+	sting = InputMap.action_get_events(\"Right\")[0].as_text()
+	RightInput.text = sting.replace(\"(Physical)\", \"\")
+	sting= InputMap.action_get_events(\"Up\")[0].as_text()
+	UpInput.text = sting.replace(\"(Physical)\", \"\")
+	sting = InputMap.action_get_events(\"Down\")[0].as_text()
+	DownInput.text = sting.replace(\"(Physical)\", \"\")
+	sting = InputMap.action_get_events(\"Attack\")[0].as_text()
+	AttackInput.text = sting.replace(\"(Physical)\", \"\")
+	sting = InputMap.action_get_events(\"Action\")[0].as_text()
+	ActionInput.text = sting.replace(\"(Physical)\", \"\")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_back_button_pressed():
+	self.hide()
+	get_parent().show()
+"
+
+[node name="HUD_Settings" type="CanvasLayer"]
+visible = false
+script = SubResource("GDScript_eirpq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.503
+anchor_right = 0.5
+anchor_bottom = 0.503
+offset_left = -957.0
+offset_top = -543.24
+offset_right = 960.0
+offset_bottom = 543.76
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 825)
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+tab_alignment = 1
+current_tab = 1
+
+[node name="Settings" type="TabBar" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VolumeLabel" type="Label" parent="VBoxContainer/TabContainer/Settings"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+offset_left = 396.0
+offset_top = 147.0
+offset_right = 896.0
+offset_bottom = 247.0
+theme_override_font_sizes/font_size = 35
+text = "Volume"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/TabContainer/Settings"]
+layout_mode = 2
+offset_left = 922.0
+offset_top = 151.0
+offset_right = 1357.0
+offset_bottom = 192.0
+
+[node name="Controls" type="TabBar" parent="VBoxContainer/TabContainer"]
+layout_mode = 2
+tab_alignment = 1
+metadata/_tab_index = 1
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/TabContainer/Controls"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.184
+anchor_top = 0.08
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -3.0
+offset_bottom = -3.0
+theme_override_constants/h_separation = 100
+columns = 2
+
+[node name="UpLabel" type="Label" parent="VBoxContainer/TabContainer/Controls/GridContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Up"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpButton" type="Button" parent="VBoxContainer/TabContainer/Controls/GridContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "Button X"
+
+[node name="DownLabel" type="Label" parent="VBoxContainer/TabContainer/Controls/GridContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Down"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DownButton" type="Button" parent="VBoxContainer/TabContainer/Controls/GridContainer"]
+layout_mode = 2
+text = "Button X"
+
+[node name="LeftLabel" type="Label" parent="VBoxContainer/TabContainer/Controls/GridContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Left"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeftButton" type="Button" parent="VBoxContainer/TabContainer/Controls/GridContainer"]
+layout_mode = 2
+text = "Button X"
+
+[node name="RightLabel" type="Label" parent="VBoxContainer/TabContainer/Controls/GridContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Right"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightButton" type="Button" parent="VBoxContainer/TabContainer/Controls/GridContainer"]
+layout_mode = 2
+text = "Button X"
+
+[node name="AttackLabel" type="Label" parent="VBoxContainer/TabContainer/Controls/GridContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Shot"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackButton" type="Button" parent="VBoxContainer/TabContainer/Controls/GridContainer"]
+layout_mode = 2
+text = "Button X"
+
+[node name="ActionLabel" type="Label" parent="VBoxContainer/TabContainer/Controls/GridContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Dash"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActionButton" type="Button" parent="VBoxContainer/TabContainer/Controls/GridContainer"]
+layout_mode = 2
+text = "Button X"
+
+[node name="Button" type="Button" parent="VBoxContainer/TabContainer/Controls"]
+layout_mode = 0
+offset_left = 830.0
+offset_top = 703.0
+offset_right = 1050.0
+offset_bottom = 747.0
+theme_override_font_sizes/font_size = 25
+text = "Reset by default"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_constants/margin_left = 750
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 750
+
+[node name="BackButton" type="Button" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Back to menu"
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/BackButton" to="." method="_on_back_button_pressed"]

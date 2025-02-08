@@ -15,9 +15,14 @@ run/main_scene="res://scenes/world.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="viewport"
+
 [editor_plugins]
 
-window/stretch/mode="viewport"
 enabled=PackedStringArray("res://addons/PerfBullets/plugin.cfg")
 
 [input]
@@ -65,5 +70,4 @@ Attack={
 
 [physics]
 
-2d/default_gravity=0.0
 2d/default_gravity_vector=Vector2(0, 0)
