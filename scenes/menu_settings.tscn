@@ -15,7 +15,7 @@ var catchNextInput = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.show()
+	#self.show()
 	updateListOfControl()
 
 
@@ -46,8 +46,8 @@ func updateListOfControl():
 	
 func _on_back_button_pressed():
 	self.hide()
-	#get_parent().show()
-	get_tree().quit()
+	get_parent().show()
+	#get_tree().quit()
 
 func _on_up_button_button_down():
 	UpInput.text = \"...\"
@@ -80,7 +80,7 @@ func _on_action_button_button_down():
 	catchNextInput = true
 "
 
-[node name="HUD_Settings" type="CanvasLayer"]
+[node name="Menu_Settings" type="CanvasLayer"]
 script = SubResource("GDScript_eirpq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
