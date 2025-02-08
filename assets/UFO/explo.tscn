@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://jpid6egh0bkh"]
+
+[ext_resource type="Texture2D" uid="uid://bv3kbgw1xfg57" path="res://assets/UFO/laserYellow_burst.png" id="1_w7lf4"]
+[ext_resource type="Texture2D" uid="uid://1hqj88x5wtwn" path="res://assets/UFO/laserPink_burst.png" id="2_7c14h"]
+[ext_resource type="Texture2D" uid="uid://cipxbe5nswx4y" path="res://assets/UFO/laserGreen_burst.png" id="3_noc58"]
+[ext_resource type="Script" path="res://assets/UFO/explo.gd" id="4_q28ur"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_24khq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_w7lf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7c14h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_noc58")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(1e-05, 1e-05)
+sprite_frames = SubResource("SpriteFrames_24khq")
+autoplay = "default"
+frame = 2
+frame_progress = 0.0545952
+script = ExtResource("4_q28ur")
