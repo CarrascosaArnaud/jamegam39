@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dnvjyjpwj4qao"]
 
+[ext_resource type="Texture2D" uid="uid://dc2uwig4seb3w" path="res://assets/Ships/ship_H.png" id="1_cjqx6"]
 [ext_resource type="PackedScene" uid="uid://mcdmbi5qjthi" path="res://scenes/components/hitbox_component.tscn" id="2_agsip"]
 [ext_resource type="PackedScene" uid="uid://m2a3i1mwfuio" path="res://scenes/components/health_component.tscn" id="3_8wfff"]
-[ext_resource type="Texture2D" uid="uid://dvqktyxiar525" path="res://assets/image/player.png" id="3_b8fra"]
 
 [sub_resource type="GDScript" id="GDScript_quhyo"]
 script/source = "extends CharacterBody2D
@@ -59,7 +59,7 @@ script = SubResource("GDScript_quhyo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
-texture = ExtResource("3_b8fra")
+texture = ExtResource("1_cjqx6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_k7snd")
