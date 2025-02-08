@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3lgevswqjm2g"]
+[gd_scene load_steps=11 format=3 uid="uid://c3lgevswqjm2g"]
 
 [ext_resource type="PackedScene" uid="uid://dnvjyjpwj4qao" path="res://scenes/player.tscn" id="2_1mq22"]
 [ext_resource type="PackedScene" uid="uid://cbt3carvkp3ou" path="res://scenes/enemy_patterns/follow_player_pattern.tscn" id="2_dgh2c"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dgr1vd36uh427" path="res://scenes/enemy_patterns/shooting/homingpattern.tscn" id="3_idr1h"]
 [ext_resource type="Texture2D" uid="uid://etrg3tmm8iyx" path="res://assets/Enemies/spaceShips_002.png" id="5_o6p87"]
 [ext_resource type="PackedScene" uid="uid://jvttcvqmw1qh" path="res://scenes/enemy_patterns/shooting/circlespattern.tscn" id="5_q0i0r"]
+[ext_resource type="PackedScene" uid="uid://c3yarm6een1xw" path="res://scenes/enemy_patterns/shooting/no_pattern.tscn" id="5_xg2f3"]
+[ext_resource type="PackedScene" uid="uid://bdx2pu10eplfa" path="res://scenes/enemy_patterns/shooting/shotgunpattern.tscn" id="6_7uo0x"]
 [ext_resource type="Texture2D" uid="uid://dvcxyh8p7n50x" path="res://assets/Enemies/spaceShips_003.png" id="7_xu0ka"]
 
 [node name="World" type="Node2D"]
@@ -15,7 +17,7 @@
 position = Vector2(103, 78)
 script = ExtResource("2_dk8p7")
 patterns = Array[PackedScene]([ExtResource("2_dgh2c")])
-weapons = Array[PackedScene]([ExtResource("3_idr1h"), ExtResource("5_q0i0r"), ExtResource("2_dgh2c")])
+weapons = Array[PackedScene]([ExtResource("3_idr1h"), ExtResource("5_q0i0r"), ExtResource("5_xg2f3"), ExtResource("6_7uo0x")])
 textures = Array[Texture2D]([ExtResource("3_c4rb3"), ExtResource("5_o6p87"), ExtResource("7_xu0ka")])
 
 [node name="Camera2D" type="Camera2D" parent="."]

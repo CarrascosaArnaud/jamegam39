@@ -23,6 +23,7 @@ animations = [{
 }]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+z_index = 4
 scale = Vector2(1e-05, 1e-05)
 sprite_frames = SubResource("SpriteFrames_24khq")
 autoplay = "default"

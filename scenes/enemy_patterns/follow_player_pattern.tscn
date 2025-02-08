@@ -11,6 +11,7 @@ collision_mask = 2
 script = ExtResource("1_ych3n")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+z_index = 3
 scale = Vector2(0.5, 0.5)
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -14,6 +14,6 @@ func generate_random_enemy(position: Vector2 = self.position):
 	var weapon = weapons[rng.randi_range(0, weapons.size() - 1)]
 	pattern.position = position
 	var player = get_tree().current_scene.find_child("Player")
-	var direction = position.direction_to(player.position)
+	var direction = pattern.global_position.direction_to(player.global_position)
 	pattern.load_player(texture, weapon, direction)
 	add_child(pattern)
