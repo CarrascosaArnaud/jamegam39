@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdx2pu10eplfa"]
+
+[ext_resource type="Texture2D" uid="uid://xn8hgfqcshgq" path="res://assets/SpaceShooter/Missiles/spaceMissiles_001.png" id="1_x8sho"]
+[ext_resource type="PackedScene" uid="uid://dnvjyjpwj4qao" path="res://scenes/player.tscn" id="4_kqlt7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fvglp"]
+
+[sub_resource type="BulletType" id="BulletType_b500l"]
+initialSpeed = 300.0
+_shape = SubResource("CircleShape2D_fvglp")
+acceleration = -100.0
+maxLifetime = 1.0
+
+[node name="Shotgun pattern" type="Node2D"]
+
+[node name="Spawner" type="Spawner" parent="." node_paths=PackedStringArray("trackedNode")]
+bulletType = SubResource("BulletType_b500l")
+fireRadiusDegrees = 90.0
+bulletsPerRadius = 5
+degreesBetweenRadii = 20.0
+restartAtSpin = false
+trackedNode = NodePath("../Player")
+startTowardPlayer = true
+staysTowardPlayer = true
+offsetTowardPlayer = -50.0
+textureRotation = 270.0
+position = Vector2(553, 391)
+texture = ExtResource("1_x8sho")
+
+[node name="Player" parent="." instance=ExtResource("4_kqlt7")]

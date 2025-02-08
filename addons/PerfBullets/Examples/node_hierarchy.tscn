@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://d4ihdm16p0fys"]
 
 [ext_resource type="PackedScene" uid="uid://duq34uom7vsr6" path="res://addons/PerfBullets/Examples/player.tscn" id="1_ayodl"]
-[ext_resource type="Texture2D" uid="uid://bq4fs3pbpvdwl" path="res://addons/PerfBullets/test_bullet_animation_sheet.png" id="2_kmiho"]
+[ext_resource type="Texture2D" uid="uid://bdbc248qidpbi" path="res://addons/PerfBullets/test_bullet_animation_sheet.png" id="2_kmiho"]
 [ext_resource type="Script" path="res://addons/PerfBullets/GDScript_Classes/PatternManager.gd" id="3_4pmr3"]
 [ext_resource type="Script" path="res://addons/PerfBullets/GDScript_Classes/PatternSpawnerData.gd" id="4_fy2dd"]
 [ext_resource type="Script" path="res://addons/PerfBullets/GDScript_Classes/BulletBorder.gd" id="5_nco0f"]
@@ -77,7 +77,6 @@ trackedNode = NodePath("..")
 homingWeight = 0.1
 rowsInAtlas = 2
 columnsInAtlas = 2
-moveWithParent = false
 position = Vector2(-8, -377)
 texture = ExtResource("2_kmiho")
 

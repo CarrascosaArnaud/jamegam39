@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://jvttcvqmw1qh"]
+
+[ext_resource type="Texture2D" uid="uid://xn8hgfqcshgq" path="res://assets/SpaceShooter/Missiles/spaceMissiles_001.png" id="1_4fnbj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fvglp"]
+
+[sub_resource type="BulletType" id="BulletType_b500l"]
+initialSpeed = 300.0
+_shape = SubResource("CircleShape2D_fvglp")
+acceleration = -100.0
+maxLifetime = 1.0
+
+[node name="Circles pattern" type="Node2D"]
+
+[node name="Spawner" type="Spawner" parent="."]
+bulletType = SubResource("BulletType_b500l")
+fireRate = 0.5
+bulletsPerRadius = 10
+degreesBetweenRadii = 10.0
+spinRate = 10.0
+maxSpin = 10.0
+minSpin = -10.0
+textureRotation = 270.0
+position = Vector2(553, 391)
+texture = ExtResource("1_4fnbj")

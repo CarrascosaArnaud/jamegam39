@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgr1vd36uh427"]
+
+[ext_resource type="Texture2D" uid="uid://xn8hgfqcshgq" path="res://assets/SpaceShooter/Missiles/spaceMissiles_001.png" id="1_utc5d"]
+[ext_resource type="PackedScene" uid="uid://dnvjyjpwj4qao" path="res://scenes/player.tscn" id="4_w3g5e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fvglp"]
+
+[sub_resource type="BulletType" id="BulletType_b500l"]
+_shape = SubResource("CircleShape2D_fvglp")
+maxLifetime = 1.0
+
+[node name="Homing pattern" type="Node2D"]
+
+[node name="Spawner" type="Spawner" parent="." node_paths=PackedStringArray("trackedNode")]
+bulletType = SubResource("BulletType_b500l")
+restartAtSpin = false
+trackedNode = NodePath("../Player")
+homing = true
+startTowardPlayer = true
+staysTowardPlayer = true
+textureRotation = 270.0
+position = Vector2(553, 391)
+texture = ExtResource("1_utc5d")
+
+[node name="Player" parent="." instance=ExtResource("4_w3g5e")]
