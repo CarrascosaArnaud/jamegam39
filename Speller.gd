@@ -1,7 +1,15 @@
-extends Marker2D
+class_name Speller extends Marker2D
 
-@export var text = "An Auto-shot ?! 
-NEVER JOHN FITZGERALD KENNEDY WOULD LET THIS HAPPEN !!"
+static var jfk = preload("res://scenes/speller.tscn")
+static var instance;
+
+static func spell(owner, text: String = "An Auto-shot ?!\nNEVER JOHN FITZGERALD KENNEDY WOULD LET THIS HAPPEN !!"):
+	if instance == null:
+		instance = jfk.instantiate()
+		instance.text = text
+		owner.add_child(instance)
+
+@export var text = ""
 @export var apresAffichage = 2.0
 @export var avantAffichage = 0.0
 @export var label : Label
@@ -32,6 +40,7 @@ func display_text():
 	label.visible_ratio = 0
 	text_finish.emit()
 	queue_free()
+	instance = null
 
 func _on_text_sound_finished():
 	return true

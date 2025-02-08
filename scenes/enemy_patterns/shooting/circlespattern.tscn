@@ -9,6 +9,8 @@ initialSpeed = 300.0
 _shape = SubResource("CircleShape2D_0lxbf")
 acceleration = -100.0
 maxLifetime = 1.0
+mask = 5
+collideWithBodies = true
 
 [node name="CirclePattern" type="Spawner"]
 bulletType = SubResource("BulletType_3cqvv")

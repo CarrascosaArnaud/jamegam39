@@ -24,7 +24,7 @@ func _process(delta):
 	translate(velocity * delta)
 
 func _area_entered(area):
-	print(area)
+	print(area.name)
 	
 func _body_entered(area):
 	print(area.name + " touché !")
@@ -32,3 +32,6 @@ func _body_entered(area):
 	e.global_position = global_position
 	parent.add_child(e)
 	parent.remove_child(self)
+
+func _on_bullet_hit(result, bulletIndex, spawner):
+	print(bulletIndex)

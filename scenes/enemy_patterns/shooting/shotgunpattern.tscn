@@ -8,6 +8,8 @@
 [sub_resource type="BulletType" id="BulletType_edptl"]
 initialSpeed = 300.0
 _shape = SubResource("CircleShape2D_a7l84")
+mask = 5
+collideWithBodies = true
 
 [node name="Shotgun pattern" type="Node2D"]
 script = ExtResource("1_otgp0")

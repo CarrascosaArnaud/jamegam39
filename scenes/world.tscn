@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bkkgqxa4210hi" path="res://assets/Enemies/spaceShips_001.png" id="3_c4rb3"]
 [ext_resource type="PackedScene" uid="uid://cr4uh4usbnc1" path="res://scenes/enemy_patterns/follow_path_circle_forward.tscn" id="3_nne3m"]
 [ext_resource type="Texture2D" uid="uid://etrg3tmm8iyx" path="res://assets/Enemies/spaceShips_002.png" id="5_o6p87"]
-[ext_resource type="PackedScene" uid="uid://uh6571fgaop7" path="res://scenes/enemy_patterns/bouncy_pattern.tscn" id="5_wnva7"]
+[ext_resource type="PackedScene" uid="uid://cmncx44ppq0ow" path="res://scenes/enemy_patterns/bouncy_pattern.tscn" id="5_wnva7"]
 [ext_resource type="PackedScene" uid="uid://bdx2pu10eplfa" path="res://scenes/enemy_patterns/shooting/shotgunpattern.tscn" id="7_orfme"]
 [ext_resource type="Texture2D" uid="uid://dvcxyh8p7n50x" path="res://assets/Enemies/spaceShips_003.png" id="7_xu0ka"]
 [ext_resource type="PackedScene" uid="uid://jvttcvqmw1qh" path="res://scenes/enemy_patterns/shooting/circlespattern.tscn" id="9_ckkpn"]
@@ -24,4 +24,5 @@ weapons = Array[PackedScene]([ExtResource("9_ckkpn"), ExtResource("7_orfme")])
 textures = Array[Texture2D]([ExtResource("3_c4rb3"), ExtResource("5_o6p87"), ExtResource("7_xu0ka")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 position = Vector2(576, 324)
