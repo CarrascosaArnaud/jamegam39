@@ -3,6 +3,9 @@
 [sub_resource type="GDScript" id="GDScript_eirpq"]
 script/source = "extends CanvasLayer
 
+var lastInputAction 
+var catchNextInput = false
+
 @onready var LeftInput = $VBoxContainer/TabContainer/Controls/GridContainer/LeftButton as Button
 @onready var RightInput = $VBoxContainer/TabContainer/Controls/GridContainer/RightButton as Button
 @onready var UpInput = $VBoxContainer/TabContainer/Controls/GridContainer/UpButton as Button
@@ -12,32 +15,72 @@ script/source = "extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var sting = InputMap.action_get_events(\"Left\")[0].as_text()
-	LeftInput.text = sting.replace(\"(Physical)\", \"\")
-	sting = InputMap.action_get_events(\"Right\")[0].as_text()
-	RightInput.text = sting.replace(\"(Physical)\", \"\")
-	sting= InputMap.action_get_events(\"Up\")[0].as_text()
-	UpInput.text = sting.replace(\"(Physical)\", \"\")
-	sting = InputMap.action_get_events(\"Down\")[0].as_text()
-	DownInput.text = sting.replace(\"(Physical)\", \"\")
-	sting = InputMap.action_get_events(\"Attack\")[0].as_text()
-	AttackInput.text = sting.replace(\"(Physical)\", \"\")
-	sting = InputMap.action_get_events(\"Action\")[0].as_text()
-	ActionInput.text = sting.replace(\"(Physical)\", \"\")
+	self.show()
+	updateListOfControl()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
+func _input(event):
+	if event is InputEventKey and event.pressed and catchNextInput:
+		InputMap.action_erase_events(lastInputAction)
+		InputMap.action_add_event(lastInputAction,event)
+		updateListOfControl()
+		catchNextInput = false
 
+func updateListOfControl():
+	var string = InputMap.action_get_events(\"Left\")[0].as_text()
+	LeftInput.text = string.replace(\"(Physical)\", \"\")
+	string = InputMap.action_get_events(\"Right\")[0].as_text()
+	RightInput.text = string.replace(\"(Physical)\", \"\")
+	string= InputMap.action_get_events(\"Up\")[0].as_text()
+	UpInput.text = string.replace(\"(Physical)\", \"\")
+	string = InputMap.action_get_events(\"Down\")[0].as_text()
+	DownInput.text = string.replace(\"(Physical)\", \"\")
+	string = InputMap.action_get_events(\"Attack\")[0].as_text()
+	AttackInput.text = string.replace(\"(Physical)\", \"\")
+	string = InputMap.action_get_events(\"Action\")[0].as_text()
+	ActionInput.text = string.replace(\"(Physical)\", \"\")
+	
 func _on_back_button_pressed():
 	self.hide()
-	get_parent().show()
+	#get_parent().show()
+	get_tree().quit()
+
+func _on_up_button_button_down():
+	UpInput.text = \"...\"
+	lastInputAction = \"Up\"
+	catchNextInput = true
+
+func _on_down_button_button_down():
+	DownInput.text = \"...\"
+	lastInputAction = \"Down\"
+	catchNextInput = true
+
+func _on_left_button_button_down():
+	LeftInput.text = \"...\"
+	lastInputAction = \"Left\"
+	catchNextInput = true
+	
+func _on_right_button_button_down():
+	RightInput.text = \"...\"
+	lastInputAction = \"Right\"
+	catchNextInput = true
+	
+func _on_attack_button_button_down():
+	AttackInput.text = \"...\"
+	lastInputAction = \"Attack\"
+	catchNextInput = true
+
+func _on_action_button_button_down():
+	ActionInput.text = \"...\"
+	lastInputAction = \"Action\"
+	catchNextInput = true
 "
 
 [node name="HUD_Settings" type="CanvasLayer"]
-visible = false
 script = SubResource("GDScript_eirpq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -199,4 +242,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Back to menu"
 
+[connection signal="button_down" from="VBoxContainer/TabContainer/Controls/GridContainer/UpButton" to="." method="_on_up_button_button_down"]
+[connection signal="button_down" from="VBoxContainer/TabContainer/Controls/GridContainer/DownButton" to="." method="_on_down_button_button_down"]
+[connection signal="button_down" from="VBoxContainer/TabContainer/Controls/GridContainer/LeftButton" to="." method="_on_left_button_button_down"]
+[connection signal="button_down" from="VBoxContainer/TabContainer/Controls/GridContainer/RightButton" to="." method="_on_right_button_button_down"]
+[connection signal="button_down" from="VBoxContainer/TabContainer/Controls/GridContainer/AttackButton" to="." method="_on_attack_button_button_down"]
+[connection signal="button_down" from="VBoxContainer/TabContainer/Controls/GridContainer/ActionButton" to="." method="_on_action_button_button_down"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer/BackButton" to="." method="_on_back_button_pressed"]
