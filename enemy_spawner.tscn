@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bl4gqo46olmuh"]
+
+[ext_resource type="Texture2D" uid="uid://d21g8kwpq57df" path="res://icon.svg" id="1_lwm5e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vg32x"]
+radius = 30.0
+
+[sub_resource type="BulletType" id="BulletType_44454"]
+initialSpeed = 200.0
+_shape = SubResource("CircleShape2D_vg32x")
+
+[sub_resource type="QuadMesh" id="QuadMesh_h187i"]
+size = Vector2(75, 75)
+
+[sub_resource type="MultiMesh" id="MultiMesh_b2lt3"]
+mesh = SubResource("QuadMesh_h187i")
+
+[node name="EnemySpawner" type="Spawner"]
+bulletType = SubResource("BulletType_44454")
+ID = 2
+fireRate = 0.75
+fireRadiusDegrees = 90.0
+bulletsPerRadius = 3
+startRotation = 225.0
+gravity = 4.0
+multimesh = SubResource("MultiMesh_b2lt3")
+texture = ExtResource("1_lwm5e")
