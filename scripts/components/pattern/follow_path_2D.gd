@@ -8,15 +8,17 @@ extends Enemy
 
 var weaponInstance
 
-func load_player(texture: Texture2D, weapon: PackedScene):
+func load_player(texture: Texture2D, weapon: PackedScene, direction: Vector2):
 	spriteContainer = $PathFollow2D/Sprite
 	weaponInstance = weapon.instantiate()
 	add_child(weaponInstance)
-	super(texture, weapon)
+	self.rotation = atan2(-direction.x, direction.y)
+	weaponInstance.rotation = -self.rotation
+	super(texture, weapon, direction)
 
 func _process(delta: float) -> void:
 	path_follow.progress += speed * delta;
 	weaponInstance.position = path_follow.position
 	if (path_follow.progress_ratio >= 1.0):
-		path.position += path.curve.get_point_position(path.curve.point_count - 1)
+		path.global_position = path_follow.global_position
 		path_follow.progress_ratio = 0

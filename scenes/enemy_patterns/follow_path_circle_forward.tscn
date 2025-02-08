@@ -13,6 +13,7 @@ point_count = 5
 radius = 94.0213
 
 [node name="PatternCircle" type="Path2D"]
+rotation = -0.927526
 curve = SubResource("Curve2D_m4cpe")
 script = ExtResource("1_k5rrp")
 speed = 350

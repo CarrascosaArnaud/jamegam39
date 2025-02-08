@@ -9,10 +9,12 @@ func _ready() -> void:
 	direction = direction.normalized();
 	self.rotation = atan2(-direction.x, direction.y);
 
-func load_player(texture: Texture2D, weapon: PackedScene):
+func load_player(texture: Texture2D, weapon: PackedScene, new_direction: Vector2):
 	spriteContainer = $Sprite
 	add_child(weapon.instantiate())
-	super(texture, weapon)
+	direction = new_direction;
+	self.rotation = atan2(-direction.x, direction.y);
+	super(texture, weapon, new_direction)
 
 func _process(delta: float) -> void:
 	self.linear_velocity = direction * speed * delta * 100;

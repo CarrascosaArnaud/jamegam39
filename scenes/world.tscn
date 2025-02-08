@@ -15,7 +15,7 @@
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("2_1mq22")]
-position = Vector2(1076, 614)
+position = Vector2(793, 456)
 
 [node name="EnemyBuilder" type="Node2D" parent="."]
 position = Vector2(103, 78)

@@ -10,7 +10,6 @@ class_name BulletBorder
 ##The calculated box
 var boundaryRect:Rect2
 
-
 func _ready() -> void:
 	update_boundary_rect()
 

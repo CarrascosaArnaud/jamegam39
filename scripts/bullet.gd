@@ -29,6 +29,7 @@ func _area_entered(area):
 	e.global_position = global_position
 	parent.add_child(e)
 	parent.remove_child(self)
+	queue_free()
 	
 func _body_entered(area):
 	print(area.name + " touché !")
@@ -36,3 +37,4 @@ func _body_entered(area):
 	e.global_position = global_position
 	parent.add_child(e)
 	parent.remove_child(self)
+	queue_free()
