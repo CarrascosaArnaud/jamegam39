@@ -12,7 +12,6 @@
 
 [node name="Player" parent="." instance=ExtResource("2_1mq22")]
 position = Vector2(465, 297)
-scale = Vector2(0.25, 0.25)
 
 [node name="EnemyBuilder" type="Node2D" parent="."]
 position = Vector2(384, 191)

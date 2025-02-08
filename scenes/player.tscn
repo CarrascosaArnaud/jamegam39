@@ -52,13 +52,14 @@ func shoot():
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k7snd"]
-radius = 156.08
+radius = 13.0
 
 [node name="Player" type="CharacterBody2D"]
 script = SubResource("GDScript_quhyo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("1_cjqx6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
