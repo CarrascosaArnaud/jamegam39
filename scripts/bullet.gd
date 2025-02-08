@@ -24,7 +24,11 @@ func _process(delta):
 	translate(velocity * delta)
 
 func _area_entered(area):
-	print(area.name)
+	print(area.name + " touché !")
+	var e = explo.instantiate()
+	e.global_position = global_position
+	parent.add_child(e)
+	parent.remove_child(self)
 	
 func _body_entered(area):
 	print(area.name + " touché !")

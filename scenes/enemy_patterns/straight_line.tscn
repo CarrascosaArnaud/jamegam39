@@ -1,9 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://pkiiaiycivlg"]
+[gd_scene load_steps=3 format=3 uid="uid://pkiiaiycivlg"]
 
 [ext_resource type="Script" path="res://scripts/components/pattern/move_forward.gd" id="1_pe0dd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0auqk"]
+radius = 94.0213
 
 [node name="PatternForward" type="RigidBody2D"]
 script = ExtResource("1_pe0dd")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = -2.35619
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_0auqk")
