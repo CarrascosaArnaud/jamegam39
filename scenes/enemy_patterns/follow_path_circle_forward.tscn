@@ -1,36 +1,35 @@
 [gd_scene load_steps=5 format=3 uid="uid://cr4uh4usbnc1"]
 
-[ext_resource type="Script" path="res://scripts/components/follow_path_2D.gd" id="1_k5rrp"]
-[ext_resource type="Texture2D" uid="uid://dpdqqtj1m7vh4" path="res://assets/SpaceShooter/Ships/spaceShips_001.png" id="2_56ccy"]
+[ext_resource type="Script" path="res://scripts/components/pattern/follow_path_2D.gd" id="1_k5rrp"]
+[ext_resource type="Texture2D" uid="uid://bkkgqxa4210hi" path="res://assets/Enemies/spaceShips_001.png" id="2_18yj4"]
 
 [sub_resource type="Curve2D" id="Curve2D_m4cpe"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, -100, 0, 100, -100, 100, 0, 0, 0, 0, 0, 200, 0, 65, 0, -75, 75, 137.5, 0, 0, 0, 0, 0, 75)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, -100, 0, 100, -100, 100, 0, 0, 0, 0, 0, 200, 0, 65, 0, -45, 65, 137.5, 0, 0, 0, 0, 0, 100)
 }
 point_count = 5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ik58"]
 radius = 94.0213
 
-[node name="EnemyCircle" type="Node2D"]
-script = ExtResource("1_k5rrp")
-
-[node name="Path2D" type="Path2D" parent="."]
+[node name="PatternCircle" type="Path2D"]
 curve = SubResource("Curve2D_m4cpe")
+script = ExtResource("1_k5rrp")
+speed = 350
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
 rotation = 2.35619
 rotates = false
 loop = false
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Path2D/PathFollow2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="PathFollow2D"]
 
-[node name="Sprite" type="Sprite2D" parent="Path2D/PathFollow2D/CharacterBody2D"]
+[node name="Sprite" type="Sprite2D" parent="PathFollow2D/CharacterBody2D"]
 rotation = -2.35619
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_56ccy")
+texture = ExtResource("2_18yj4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/CharacterBody2D"]
 rotation = -2.35619
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_8ik58")
