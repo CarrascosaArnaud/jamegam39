@@ -8,7 +8,7 @@ extends Enemy
 
 func load_player(texture: Texture2D, weapon: PackedScene):
 	spriteContainer = $PathFollow2D/Sprite
-	$PathFollow2D.add_child(weapon.instantiate())
+	add_child(weapon.instantiate())
 	super(texture, weapon)
 
 func _process(delta: float) -> void:

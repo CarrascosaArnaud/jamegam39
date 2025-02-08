@@ -20,7 +20,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	self.linear_velocity = direction * speed * delta * 100
-	self.rotation = atan2(-direction.x, direction.y)
+	if (follow_rotation && spriteContainer != null):
+		spriteContainer.rotation = atan2(-direction.x, direction.y)
 	if (self.global_position.x <= top_left.x && state_bounce_x != "left"):
 		bounce("left", true)
 	if (self.global_position.y <= top_left.y && state_bounce_y != "top"):
