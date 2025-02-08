@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnjrdi0mnw5vx"]
+
+[ext_resource type="Script" path="res://Speller.gd" id="1_73ekw"]
+
+[node name="Speller" type="Marker2D" node_paths=PackedStringArray("label")]
+script = ExtResource("1_73ekw")
+text = "An Auto-shot ?! NEVER JOHN FITZGERALD KENNEDY WOULD LET THIS HAPPEN !!"
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+horizontal_alignment = 1
