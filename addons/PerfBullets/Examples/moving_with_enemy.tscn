@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://7wfgj7elk1q7"]
+[gd_scene load_steps=11 format=3 uid="uid://7wfgj7elk1q7"]
 
 [ext_resource type="Script" path="res://addons/PerfBullets/Examples/moving_with_enemy.gd" id="1_8xb1d"]
-[ext_resource type="Texture2D" uid="uid://drtes0t0gk1b8" path="res://icon.svg" id="1_g0w4q"]
-[ext_resource type="Texture2D" uid="uid://bdbc248qidpbi" path="res://addons/PerfBullets/test_bullet_animation_sheet.png" id="2_f7hcb"]
+[ext_resource type="Texture2D" uid="uid://d21g8kwpq57df" path="res://icon.svg" id="1_g0w4q"]
+[ext_resource type="Texture2D" uid="uid://c5kcek2vu3wj3" path="res://addons/PerfBullets/test_bullet_animation_sheet.png" id="2_f7hcb"]
+[ext_resource type="PackedScene" uid="uid://bexnfkesiicku" path="res://enemy_spawner.tscn" id="3_c8d84"]
 [ext_resource type="Script" path="res://addons/PerfBullets/GDScript_Classes/BulletBorder.gd" id="4_v8qsx"]
 [ext_resource type="PackedScene" uid="uid://duq34uom7vsr6" path="res://addons/PerfBullets/Examples/player.tscn" id="5_fhnh6"]
 
@@ -11,19 +12,6 @@ font_size = 32
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyxgv"]
 size = Vector2(123, 122)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_vg32x"]
-radius = 30.0
-
-[sub_resource type="BulletType" id="BulletType_44454"]
-initialSpeed = 200.0
-_shape = SubResource("CircleShape2D_vg32x")
-
-[sub_resource type="QuadMesh" id="QuadMesh_h187i"]
-size = Vector2(75, 75)
-
-[sub_resource type="MultiMesh" id="MultiMesh_b2lt3"]
-mesh = SubResource("QuadMesh_h187i")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rayqn"]
 radius = 20.0
@@ -58,16 +46,7 @@ texture = ExtResource("1_g0w4q")
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_eyxgv")
 
-[node name="EnemySpawner" type="Spawner" parent="Enemy"]
-bulletType = SubResource("BulletType_44454")
-ID = 2
-fireRate = 0.75
-fireRadiusDegrees = 90.0
-bulletsPerRadius = 3
-startRotation = 225.0
-gravity = 4.0
-multimesh = SubResource("MultiMesh_b2lt3")
-texture = ExtResource("1_g0w4q")
+[node name="EnemySpawner" parent="Enemy" instance=ExtResource("3_c8d84")]
 
 [node name="BulletBorder" type="Node2D" parent="." node_paths=PackedStringArray("topLeft", "bottomRight")]
 script = ExtResource("4_v8qsx")

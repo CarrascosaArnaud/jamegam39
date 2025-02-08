@@ -6,9 +6,10 @@ extends Enemy
 # speed in px per second
 @export var speed = 100
 
-func load_player(texture: Texture2D):
-	spriteContainer = $PathFollow2D/CharacterBody2D/Sprite
-	super(texture)
+func load_player(texture: Texture2D, weapon: PackedScene):
+	spriteContainer = $PathFollow2D/Sprite
+	$PathFollow2D.add_child(weapon.instantiate())
+	super(texture, weapon)
 
 func _process(delta: float) -> void:
 	path_follow.progress += speed * delta;

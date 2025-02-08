@@ -30,9 +30,10 @@ func _process(delta: float) -> void:
 	if (self.global_position.y >= bottom_right.y && state_bounce_y != "bottom"):
 		bounce("bottom", false)
 
-func load_player(texture: Texture2D):
+func load_player(texture: Texture2D, weapon: PackedScene):
 	spriteContainer = $Sprite
-	super(texture)
+	add_child(weapon.instantiate())
+	super(texture, weapon)
 
 func bounce(new_state_bounce: String, horizontal: bool):
 	if (horizontal):

@@ -22,16 +22,16 @@ rotation = 2.35619
 rotates = false
 loop = false
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="PathFollow2D"]
-collision_layer = 2
-collision_mask = 2
-
-[node name="Sprite" type="Sprite2D" parent="PathFollow2D/CharacterBody2D"]
+[node name="Sprite" type="Sprite2D" parent="PathFollow2D"]
 rotation = -2.35619
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_18yj4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/CharacterBody2D"]
+[node name="Area2D" type="Area2D" parent="PathFollow2D"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Area2D"]
 rotation = -2.35619
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_8ik58")

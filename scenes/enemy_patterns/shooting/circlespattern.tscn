@@ -4,16 +4,14 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0lxbf"]
 
-[sub_resource type="BulletType" id="BulletType_b500l"]
+[sub_resource type="BulletType" id="BulletType_3cqvv"]
 initialSpeed = 300.0
 _shape = SubResource("CircleShape2D_0lxbf")
 acceleration = -100.0
 maxLifetime = 1.0
 
-[node name="Circles pattern" type="Node2D"]
-
-[node name="Spawner" type="Spawner" parent="."]
-bulletType = SubResource("BulletType_b500l")
+[node name="CirclePattern" type="Spawner"]
+bulletType = SubResource("BulletType_3cqvv")
 fireRate = 0.5
 bulletsPerRadius = 10
 degreesBetweenRadii = 10.0
