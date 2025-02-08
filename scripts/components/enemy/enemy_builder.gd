@@ -8,8 +8,10 @@ func _ready() -> void:
 
 func generate_random_enemy():	
 	var rng = RandomNumberGenerator.new()
-	var pattern = patterns[rng.randi_range(0, patterns.size() - 1)].instantiate() as Enemy;
-	pattern.load_player(textures[rng.randi_range(0, textures.size() - 1)])
+	var pattern = patterns[rng.randi_range(0, patterns.size() - 1)].instantiate() as Enemy
+	var indexTexture = rng.randi_range(0, textures.size() - 1)
+	print(indexTexture)
+	pattern.load_player(textures[indexTexture])
 	add_child(pattern)
 
 func get_all_tscn_from_folder_path(path: String, extensions: Array = []) -> Array[String]:
