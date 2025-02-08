@@ -13,6 +13,5 @@ func load_player(texture: Texture2D):
 func _process(delta: float) -> void:
 	path_follow.progress += speed * delta;
 	if (path_follow.progress_ratio >= 1.0):
-		print(path.curve.get_point_position(path.curve.point_count - 1))
 		path.position += path.curve.get_point_position(path.curve.point_count - 1)
 		path_follow.progress_ratio = 0
