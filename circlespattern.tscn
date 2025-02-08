@@ -21,5 +21,4 @@ spinRate = 10.0
 maxSpin = 10.0
 minSpin = -10.0
 textureRotation = 270.0
-position = Vector2(553, 391)
 texture = ExtResource("1_4fnbj")
