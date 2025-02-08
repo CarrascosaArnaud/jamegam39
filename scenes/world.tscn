@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3lgevswqjm2g"]
+[gd_scene load_steps=9 format=3 uid="uid://c3lgevswqjm2g"]
 
 [ext_resource type="PackedScene" uid="uid://dnvjyjpwj4qao" path="res://scenes/player.tscn" id="2_1mq22"]
 [ext_resource type="PackedScene" uid="uid://pkiiaiycivlg" path="res://scenes/enemy_patterns/straight_line.tscn" id="2_cj5k6"]
 [ext_resource type="Script" path="res://scripts/components/enemy/enemy_builder.gd" id="2_dk8p7"]
 [ext_resource type="Texture2D" uid="uid://bkkgqxa4210hi" path="res://assets/Enemies/spaceShips_001.png" id="3_c4rb3"]
 [ext_resource type="PackedScene" uid="uid://cr4uh4usbnc1" path="res://scenes/enemy_patterns/follow_path_circle_forward.tscn" id="3_nne3m"]
-[ext_resource type="PackedScene" uid="uid://dr75ygixt8fae" path="res://scenes/enemy_patterns/bouncy_pattern.tscn" id="5_6xkq7"]
+[ext_resource type="PackedScene" uid="uid://byr07hge04x2v" path="res://scenes/enemy_patterns/bouncy_pattern.tscn" id="5_6xkq7"]
+[ext_resource type="Texture2D" uid="uid://etrg3tmm8iyx" path="res://assets/Enemies/spaceShips_002.png" id="5_o6p87"]
 [ext_resource type="Texture2D" uid="uid://dvcxyh8p7n50x" path="res://assets/Enemies/spaceShips_003.png" id="7_xu0ka"]
 
 [node name="World" type="Node2D"]
@@ -17,7 +18,7 @@ position = Vector2(1076, 614)
 position = Vector2(103, 78)
 script = ExtResource("2_dk8p7")
 patterns = Array[PackedScene]([ExtResource("3_nne3m"), ExtResource("2_cj5k6"), ExtResource("5_6xkq7")])
-textures = Array[Texture2D]([ExtResource("3_c4rb3"), ExtResource("7_xu0ka")])
+textures = Array[Texture2D]([ExtResource("3_c4rb3"), ExtResource("5_o6p87"), ExtResource("7_xu0ka")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)

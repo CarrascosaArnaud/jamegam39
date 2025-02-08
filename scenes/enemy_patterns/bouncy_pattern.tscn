@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr75ygixt8fae"]
+[gd_scene load_steps=2 format=3 uid="uid://byr07hge04x2v"]
 
 [ext_resource type="Script" path="res://scripts/components/pattern/move_forward_bouncy_camera.gd" id="1_7r4wt"]
 
