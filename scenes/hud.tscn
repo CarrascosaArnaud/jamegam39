@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk6vkqorptuc5"]
+
+[ext_resource type="Texture2D" uid="uid://b24tcato3tjw7" path="res://assets/hud/barHorizontal_red.png" id="1_vbfsa"]
+[ext_resource type="Texture2D" uid="uid://cu83hobysj5bv" path="res://assets/hud/barHorizontal_green.png" id="2_2jvvo"]
+
+[sub_resource type="GDScript" id="GDScript_1whcy"]
+script/source = "extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_player_life_update(value : int):
+	$LifeBar.value = value
+"
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_1whcy")
+
+[node name="LifeBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 43.0
+offset_right = 242.0
+offset_bottom = 83.0
+value = 50.0
+texture_under = ExtResource("1_vbfsa")
+texture_progress = ExtResource("2_2jvvo")

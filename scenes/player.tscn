@@ -7,14 +7,18 @@
 [sub_resource type="GDScript" id="GDScript_quhyo"]
 script/source = "extends CharacterBody2D
 
+signal life_update
+
 const SPEED = 2500.0
 var fire_rate = 0.3
 var shooting_cooldown = 0
 var bullet_speed = 2500
 var screen_size
 var jfk = preload(\"res://scenes/speller.tscn\")
+
 func _ready():
 	screen_size = get_viewport_rect().size
+	#hide()
 
 func _physics_process(delta: float) -> void:
 	if shooting_cooldown > 0: shooting_cooldown -= delta
@@ -44,11 +48,13 @@ func _physics_process(delta: float) -> void:
 
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)   
+	
+	life_update.emit($HealthComponent.health * 10)
 
 @onready var coll_shape_length: float = get_node(\"CollisionShape2D\").shape.radius 
 
 func shoot():
-	if shooting_cooldown <= 0:
+	if shooting_cooldown <= 0 and self.is_visible():
 		var b : Bullet = Bullet.shoot(global_position, get_global_mouse_position(), bullet_speed, coll_shape_length)
 		if b.velocity.is_zero_approx():
 			var t = jfk.instantiate()
@@ -56,6 +62,11 @@ func shoot():
 		else:
 			owner.add_child(b)
 			shooting_cooldown = fire_rate
+
+func start(pos):
+	position = pos
+	rotation = 0
+	show()
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k7snd"]
