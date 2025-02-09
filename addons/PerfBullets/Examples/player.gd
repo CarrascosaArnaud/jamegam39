@@ -21,7 +21,6 @@ func _physics_process(delta):
 			if Input.is_action_just_pressed("ui_accept"):
 				$PlayerShot.set_manual_start(true)
 
-
 func _on_bullet_hit(result, bulletIndex, spawner):
 #	spawner.free_bullet_to_pool(bulletIndex) #can be used if returnBulletsToPoolAutomatically is false (see documentation on README)
 	print("hit ", result[0]["collider"])
