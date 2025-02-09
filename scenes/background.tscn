@@ -1,0 +1,16 @@
+[gd_scene load_steps=11 format=3 uid="uid://dqv826a2xrk4i"]
+
+[ext_resource type="Script" path="res://background.gd" id="1_eokls"]
+[ext_resource type="Texture2D" uid="uid://bhq77cfptdcop" path="res://assets/backgrounds/Fading_Sky-Sunset_03-512x512.png" id="2_pqyaf"]
+[ext_resource type="Texture2D" uid="uid://b1fog6votxi3b" path="res://assets/backgrounds/Fading_Sky-Sunset_04-512x512.png" id="3_xpkpn"]
+[ext_resource type="Texture2D" uid="uid://dqlp3jomuka4r" path="res://assets/backgrounds/Fuzzy_Sky-Blue_01-512x512.png" id="4_ojspu"]
+[ext_resource type="Texture2D" uid="uid://cg75e0fpgv7ol" path="res://assets/backgrounds/Fuzzy_Sky-Night_01-512x512.png" id="5_66ayo"]
+[ext_resource type="Texture2D" uid="uid://dmiaxjncrv13y" path="res://assets/backgrounds/Puffy_Sky-Blue_03-512x512.png" id="6_36uy3"]
+[ext_resource type="Texture2D" uid="uid://8jn2jlws1c2p" path="res://assets/backgrounds/Puffy_Sky-Evening_01-512x512.png" id="7_nb2e7"]
+[ext_resource type="Texture2D" uid="uid://dr8q2f2qwlv1j" path="res://assets/backgrounds/Puffy_Sky-Evening_02-512x512.png" id="8_iqpfp"]
+[ext_resource type="Texture2D" uid="uid://byvqiie6k12ci" path="res://assets/backgrounds/Wispy_Sky-Blue_01-512x512.png" id="9_81u4f"]
+[ext_resource type="Texture2D" uid="uid://8t565pvh34ht" path="res://assets/backgrounds/Wispy_Sky-Sunset_01-512x512.png" id="10_c0he0"]
+
+[node name="Background" type="Sprite2D"]
+script = ExtResource("1_eokls")
+backgroundPic = Array[Texture2D]([ExtResource("2_pqyaf"), ExtResource("3_xpkpn"), ExtResource("4_ojspu"), ExtResource("5_66ayo"), ExtResource("6_36uy3"), ExtResource("7_nb2e7"), ExtResource("8_iqpfp"), ExtResource("9_81u4f"), ExtResource("10_c0he0")])

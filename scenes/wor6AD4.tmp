@@ -31,6 +31,7 @@ position = Vector2(793, 456)
 [node name="Background" parent="." instance=ExtResource("11_um4ba")]
 position = Vector2(960, 120)
 scale = Vector2(3.75, 3.75)
+scrollSpeed = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
