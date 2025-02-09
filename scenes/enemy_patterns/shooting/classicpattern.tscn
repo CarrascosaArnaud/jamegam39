@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgr1vd36uh427"]
+
+[ext_resource type="Script" path="res://player_tracker_component.gd" id="1_trv6v"]
+[ext_resource type="Texture2D" uid="uid://xn8hgfqcshgq" path="res://assets/SpaceShooter/Missiles/spaceMissiles_001.png" id="2_vvutn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fvglp"]
+
+[sub_resource type="BulletType" id="BulletType_b500l"]
+_shape = SubResource("CircleShape2D_fvglp")
+maxLifetime = 5.0
+mask = 5
+collideWithBodies = true
+
+[node name="Classic pattern" type="Node2D"]
+script = ExtResource("1_trv6v")
+
+[node name="Spawner" type="Spawner" parent="." node_paths=PackedStringArray("trackedNode")]
+bulletType = SubResource("BulletType_b500l")
+fireRate = 1.5
+restartAtSpin = false
+trackedNode = NodePath(".")
+homing = true
+homingWeight = 2.0
+startTowardPlayer = true
+staysTowardPlayer = true
+textureRotation = 270.0
+texture = ExtResource("2_vvutn")
