@@ -1,5 +1,5 @@
 extends Node
 
-@onready var death_sound = $DeathSound
-@onready var mob_death_sound = $MobDeathSound
-@onready var music = $Music
+@onready var death_sound: AudioStreamPlayer = $DeathSound
+@onready var mob_death_sound: AudioStreamPlayer = $MobDeathSound
+@onready var music: AudioStreamPlayer = $Music

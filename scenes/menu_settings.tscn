@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://w8x1ls76hkdt"]
+[gd_scene load_steps=3 format=3 uid="uid://w8x1ls76hkdt"]
+
+[ext_resource type="Script" path="res://scenes/volume_slider.gd" id="1_ru5s5"]
 
 [sub_resource type="GDScript" id="GDScript_eirpq"]
 script/source = "extends CanvasLayer
@@ -125,6 +127,8 @@ offset_left = 922.0
 offset_top = 151.0
 offset_right = 1357.0
 offset_bottom = 192.0
+value = 46.0
+script = ExtResource("1_ru5s5")
 
 [node name="Controls" type="TabBar" parent="VBoxContainer/TabContainer"]
 layout_mode = 2
@@ -237,6 +241,8 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Back to menu"
 
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Settings/HSlider" to="VBoxContainer/TabContainer/Settings/HSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Settings/HSlider" to="VBoxContainer/TabContainer/Settings/HSlider" method="on_changed"]
 [connection signal="button_down" from="VBoxContainer/TabContainer/Controls/GridContainer/UpButton" to="." method="_on_up_button_button_down"]
 [connection signal="button_down" from="VBoxContainer/TabContainer/Controls/GridContainer/DownButton" to="." method="_on_down_button_button_down"]
 [connection signal="button_down" from="VBoxContainer/TabContainer/Controls/GridContainer/LeftButton" to="." method="_on_left_button_button_down"]
