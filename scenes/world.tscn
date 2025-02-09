@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3lgevswqjm2g"]
+[gd_scene load_steps=12 format=3 uid="uid://c3lgevswqjm2g"]
 
 [ext_resource type="PackedScene" uid="uid://dnvjyjpwj4qao" path="res://scenes/player.tscn" id="2_1mq22"]
 [ext_resource type="PackedScene" uid="uid://cbt3carvkp3ou" path="res://scenes/enemy_patterns/follow_player_pattern.tscn" id="2_dgh2c"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" path="res://scenes/enemy_patterns/shooting/no_pattern.tscn" id="5_xg2f3"]
 [ext_resource type="PackedScene" uid="uid://bdx2pu10eplfa" path="res://scenes/enemy_patterns/shooting/shotgunpattern.tscn" id="6_7uo0x"]
 [ext_resource type="Texture2D" uid="uid://dvcxyh8p7n50x" path="res://assets/Enemies/spaceShips_003.png" id="7_xu0ka"]
-[ext_resource type="Texture2D" uid="uid://bhq77cfptdcop" path="res://assets/backgrounds/Fading_Sky-Sunset_03-512x512.png" id="11_nwpsv"]
 [ext_resource type="PackedScene" uid="uid://dqv826a2xrk4i" path="res://scenes/background.tscn" id="11_um4ba"]
 
 [node name="World" type="Node2D"]
@@ -31,9 +30,3 @@ position = Vector2(793, 456)
 [node name="Background" parent="." instance=ExtResource("11_um4ba")]
 position = Vector2(960, 120)
 scale = Vector2(3.75, 3.75)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(960, 120)
-scale = Vector2(3.75, 3.75)
-texture = ExtResource("11_nwpsv")
