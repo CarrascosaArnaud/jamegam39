@@ -67,4 +67,4 @@ func damage(attack: int):
 	if health <= 0:
 		print(get_parent().name, " est mort")
 		player_dead.emit()
-		health = 10
+		health = 5

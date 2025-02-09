@@ -24,4 +24,5 @@ homingWeight = 2.0
 startTowardPlayer = true
 staysTowardPlayer = true
 textureRotation = 270.0
+z_index = 5
 texture = ExtResource("2_vvutn")
