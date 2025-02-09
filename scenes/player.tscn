@@ -72,6 +72,7 @@ func start(pos):
 
 
 func _on_health_component_player_dead():
+	AudioManager.death_sound.play()
 	game_over.emit()
 	hide()
 "
@@ -92,7 +93,7 @@ texture = ExtResource("1_cjqx6")
 collision_mask = 2
 script = ExtResource("4_0t170")
 INVINCIBILITY_TIME = 1.0
-MAX_HEALTH = 10.0
+MAX_HEALTH = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_k7snd")

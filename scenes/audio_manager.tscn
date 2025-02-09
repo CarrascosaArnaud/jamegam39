@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://04mmi5pnhk35"]
+
+[ext_resource type="Script" path="res://scenes/audio_manager.gd" id="1_6kjab"]
+[ext_resource type="AudioStream" uid="uid://dccfqc3mlgcxa" path="res://assets/audios/Purple.mp3" id="1_harim"]
+[ext_resource type="AudioStream" uid="uid://c08f4vgmaojgh" path="res://assets/audios/Purple2_1.mp3" id="2_wl1ue"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uujdx"]
+streams_count = 2
+stream_0/stream = ExtResource("1_harim")
+stream_1/stream = ExtResource("2_wl1ue")
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_6kjab")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_uujdx")
+volume_db = -9.0
+pitch_scale = 0.95
+
+[node name="MobDeathSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_uujdx")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_uujdx")

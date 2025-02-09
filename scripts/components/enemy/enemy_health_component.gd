@@ -16,3 +16,4 @@ func damage(attack: int):
 	
 	if (health <= 0):
 		enemy.queue_free()
+		Main.score += 1
