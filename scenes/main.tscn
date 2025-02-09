@@ -42,6 +42,7 @@ func new_game():
 func _on_menu_start_game():
 	new_game()
 
+func _on_enemy_timer_timeout():
 	var enemy_spawn_location = $EnemyPath/EnemyPathSpawn
 	enemy_spawn_location.progress_ratio = randf()
 	$EnemyBuilder.generate_random_enemy()
@@ -50,7 +51,7 @@ func _on_menu_start_game():
 		$EnemyTimer.wait_time = $EnemyTimer.wait_time - 0.25
 		enemySpawnedPassed = 0
 	else :
-		enemySpawnedPassed+=1
+		enemySpawnedPassed += 1
 "
 
 [sub_resource type="Curve2D" id="Curve2D_i7u81"]
