@@ -23,7 +23,7 @@ func _ready() -> void:
 	self.global_position.x >= bottom_right.x ||
 	self.global_position.y >= bottom_right.y):
 		is_out_screen = true
-
+ 
 func _physics_process(delta: float) -> void:
 	self.linear_velocity = direction * speed * delta * 100
 

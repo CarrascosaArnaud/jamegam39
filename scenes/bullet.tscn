@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1_fktp0"]
 [ext_resource type="Texture2D" uid="uid://bco4qwe01grr3" path="res://assets/SpaceShooter/Missiles/spaceMissiles_016.png" id="2_sndbv"]
-[ext_resource type="AudioStream" uid="uid://g46362bcub5v" path="res://sound/fire_bullet.mp3" id="3_xcro5"]
+[ext_resource type="AudioStream" uid="uid://g46362bcub5v" path="res://assets/audios/fire_bullet.mp3" id="3_xcro5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xfnrh"]
 animations = [{
