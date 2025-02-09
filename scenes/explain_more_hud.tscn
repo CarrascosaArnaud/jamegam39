@@ -5,7 +5,7 @@ script/source = "extends CanvasLayer
 
 
 func _process(delta):
-	if Input.is_action_just_pressed(\"Attack\") or Input.is_action_just_pressed(\"ui_cancel\") :
+	if (Input.is_action_just_pressed(\"Attack\") or Input.is_action_just_pressed(\"ui_cancel\")) and (self.visible == true) :
 		_on_explain_more_button_pressed()
 
 func _on_explain_more_button_pressed():
