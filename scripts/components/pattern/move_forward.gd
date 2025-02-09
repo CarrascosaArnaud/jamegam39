@@ -19,6 +19,5 @@ func load_player(texture: Texture2D, weapon: PackedScene, new_direction: Vector2
 	weaponInstance.rotation = -self.rotation
 	super(texture, weapon, new_direction)
 
-func _process(delta: float) -> void:
-	super(delta)
+func _physics_process(delta: float) -> void:
 	self.linear_velocity = direction * speed * delta * 100
