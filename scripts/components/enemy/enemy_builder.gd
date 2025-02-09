@@ -20,6 +20,7 @@ func generate_random_enemy():
 			pattern.global_position = Vector2(-50, randi_range(0, screenSize.y))
 		3:  # Droite
 			pattern.global_position = Vector2(screenSize.x + 50, randi_range(0, screenSize.y))
+	print(get_tree().current_scene)
 	var player = get_tree().current_scene.find_child("Player")
 	var direction = pattern.global_position.direction_to(player.global_position)
 	pattern.load_player(texture, weapon, direction)

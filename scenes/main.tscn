@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b4k0a3wk2rowb" path="res://scenes/menu.tscn" id="1_0sxyr"]
 [ext_resource type="PackedScene" uid="uid://dk6vkqorptuc5" path="res://scenes/hud.tscn" id="2_dl72a"]
 [ext_resource type="PackedScene" uid="uid://dnvjyjpwj4qao" path="res://scenes/player.tscn" id="2_yxbxu"]
-[ext_resource type="PackedScene" uid="uid://cm2k5f2q1p0si" path="res://scenes/enemyBuilder.tscn" id="3_v4had"]
+[ext_resource type="PackedScene" path="res://scenes/enemyBuilder.tscn" id="3_v4had"]
 [ext_resource type="PackedScene" uid="uid://c3yarm6een1xw" path="res://scenes/enemy_patterns/shooting/no_pattern.tscn" id="5_pgojc"]
 [ext_resource type="PackedScene" uid="uid://jvttcvqmw1qh" path="res://scenes/enemy_patterns/shooting/circlespattern.tscn" id="6_0kvlr"]
 [ext_resource type="PackedScene" uid="uid://dgr1vd36uh427" path="res://scenes/enemy_patterns/shooting/homingpattern.tscn" id="7_jy3yk"]
@@ -15,7 +15,7 @@ script/source = "extends Node
 signal menu_game_over
 signal update_score_hud
 
-var score = 0
+static var score = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

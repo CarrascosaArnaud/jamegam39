@@ -28,6 +28,7 @@ func _area_entered(area):
 	e.global_position = global_position
 	parent.add_child(e)
 	parent.remove_child(self)
-	if (area as HealthComponent):
-		(area as HealthComponent).damage(1)
+	var health = area as HealthComponent;
+	if health:
+		health.damage(1)
 	queue_free()

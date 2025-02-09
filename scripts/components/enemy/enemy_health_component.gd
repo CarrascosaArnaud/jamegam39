@@ -15,5 +15,5 @@ func damage(attack: int):
 	sprite.material = null
 	
 	if (health <= 0):
+		get_tree().current_scene.score += 1
 		enemy.queue_free()
-		Main.score += 1
