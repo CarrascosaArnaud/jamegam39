@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlsdku0o14h22"]
+[gd_scene load_steps=2 format=3 uid="uid://rwjnjimob1ya"]
 
 [sub_resource type="GDScript" id="GDScript_xp6p5"]
 script/source = "extends CanvasLayer
@@ -37,7 +37,7 @@ The more you score, the more your weapon will upgrade.
 
 The game is meant to be fast. 
 
-The enemy are generated randomly and will spawn faster and faster.
+The enemies are generated randomly and will spawn faster and faster.
 
 Don't get surrounded."
 horizontal_alignment = 1

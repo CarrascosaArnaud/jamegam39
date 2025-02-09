@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqaqisgc6dvqv"]
+[gd_scene load_steps=2 format=3 uid="uid://bxcbkdcbnfwiu"]
 
 [sub_resource type="GDScript" id="GDScript_xp6p5"]
 script/source = "extends CanvasLayer
@@ -39,7 +39,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 29
-text = "You can move with directional arrows and WASD, aim and shoot with your left click, and teleport with your right click without cooldown. 
+text = "You can move with directional arrows or WASD, aim and shoot with your left click, and teleport with your right click without cooldown. 
 
 
 You'll face alot of ennemies and alot of their attacks. 
