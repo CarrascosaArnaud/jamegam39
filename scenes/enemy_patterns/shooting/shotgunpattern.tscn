@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_a7l84"]
 
 [sub_resource type="BulletType" id="BulletType_edptl"]
-initialSpeed = 300.0
+initialSpeed = 275.0
 _shape = SubResource("CircleShape2D_a7l84")
 scale = 0.85
 mask = 5
@@ -17,6 +17,7 @@ script = ExtResource("1_otgp0")
 
 [node name="Spawner" type="Spawner" parent="." node_paths=PackedStringArray("trackedNode")]
 bulletType = SubResource("BulletType_edptl")
+fireRate = 1.5
 fireRadiusDegrees = 90.0
 bulletsPerRadius = 5
 degreesBetweenRadii = 20.0
@@ -27,6 +28,7 @@ staysTowardPlayer = true
 offsetTowardPlayer = -45.0
 textureRotation = 270.0
 z_index = 5
+position = Vector2(-2, 0)
 texture = ExtResource("2_lp1ih")
 
 [connection signal="bullet_hit" from="Spawner" to="." method="_on_bullet_hit"]

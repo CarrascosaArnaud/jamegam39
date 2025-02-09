@@ -17,7 +17,6 @@ script = ExtResource("1_af748")
 
 [node name="Spawner" type="Spawner" parent="."]
 bulletType = SubResource("BulletType_3cqvv")
-fireRate = 0.5
 bulletsPerRadius = 10
 degreesBetweenRadii = 10.0
 spinRate = 10.0
