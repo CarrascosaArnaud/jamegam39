@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://04mmi5pnhk35"]
+[gd_scene load_steps=10 format=3 uid="uid://04mmi5pnhk35"]
 
 [ext_resource type="Script" path="res://scenes/audio_manager.gd" id="1_6kjab"]
 [ext_resource type="AudioStream" uid="uid://dccfqc3mlgcxa" path="res://assets/audios/Purple.mp3" id="1_harim"]
+[ext_resource type="AudioStream" uid="uid://d1ccvwiua0lgd" path="res://assets/audios/damage-40114.mp3" id="2_p8y4k"]
 [ext_resource type="AudioStream" uid="uid://c08f4vgmaojgh" path="res://assets/audios/Purple2_1.mp3" id="2_wl1ue"]
 [ext_resource type="AudioStream" uid="uid://c0rojns7ff7h0" path="res://assets/audios/naunauu gamejam 3 2.mp3" id="4_186bd"]
 [ext_resource type="AudioStream" uid="uid://b5d1np6oqbnd7" path="res://assets/audios/explosion.mp3" id="4_eh4k2"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uujdx"]
+random_pitch = 1.4
 streams_count = 2
 stream_0/stream = ExtResource("1_harim")
 stream_1/stream = ExtResource("2_wl1ue")
@@ -16,6 +18,11 @@ random_pitch = 1.4
 random_volume_offset_db = 6.0
 streams_count = 1
 stream_0/stream = ExtResource("4_eh4k2")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tccyv"]
+random_pitch = 1.6
+streams_count = 1
+stream_0/stream = ExtResource("2_p8y4k")
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_6kjab")
@@ -33,3 +40,8 @@ pitch_scale = 1.2
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_186bd")
 autoplay = true
+
+[node name="Damage" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_tccyv")
+volume_db = -9.0
+pitch_scale = 0.75

@@ -58,6 +58,7 @@ func set_invincible(new_is_invincible: bool):
 func damage(attack: int):
 	if (is_invincible):
 		return
+
 	
 	set_invincible(true)
 	timer_invincibility.start()
@@ -68,3 +69,5 @@ func damage(attack: int):
 		print(get_parent().name, " est mort")
 		player_dead.emit()
 		health = 5
+	else:
+		AudioManager.damage.play()
