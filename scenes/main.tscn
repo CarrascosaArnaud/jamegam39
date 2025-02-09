@@ -99,7 +99,6 @@ wait_time = 2.7
 position = Vector2(960, 540)
 
 [node name="Background" parent="." instance=ExtResource("9_rl2xq")]
-z_index = -5
 position = Vector2(960, 120)
 scale = Vector2(3.75, 3.75)
 backgroundPic = Array[Texture2D]([ExtResource("10_0rku6"), ExtResource("11_q8ju4"), ExtResource("12_jrndf"), ExtResource("15_jxe2r")])
