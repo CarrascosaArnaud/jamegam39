@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://kxavomltxyti"]
+[gd_scene load_steps=23 format=3 uid="uid://kxavomltxyti"]
 
 [ext_resource type="PackedScene" uid="uid://b4k0a3wk2rowb" path="res://scenes/menu.tscn" id="1_0sxyr"]
 [ext_resource type="PackedScene" uid="uid://dk6vkqorptuc5" path="res://scenes/hud.tscn" id="2_dl72a"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dqv826a2xrk4i" path="res://scenes/background.tscn" id="9_rl2xq"]
 [ext_resource type="PackedScene" uid="uid://dgr1vd36uh427" path="res://scenes/enemy_patterns/shooting/homingpattern.tscn" id="9_wvsnl"]
 [ext_resource type="Texture2D" uid="uid://bhq77cfptdcop" path="res://assets/backgrounds/Fading_Sky-Sunset_03-512x512.png" id="10_0rku6"]
+[ext_resource type="PackedScene" uid="uid://dfkgvypwfudvm" path="res://scenes/enemy_patterns/zig_zag_pattern.tscn" id="10_xxfs3"]
 [ext_resource type="Texture2D" uid="uid://b1fog6votxi3b" path="res://assets/backgrounds/Fading_Sky-Sunset_04-512x512.png" id="11_q8ju4"]
 [ext_resource type="Texture2D" uid="uid://cg75e0fpgv7ol" path="res://assets/backgrounds/Fuzzy_Sky-Night_01-512x512.png" id="12_jrndf"]
 [ext_resource type="Texture2D" uid="uid://8t565pvh34ht" path="res://assets/backgrounds/Wispy_Sky-Sunset_01-512x512.png" id="15_jxe2r"]
@@ -88,7 +89,7 @@ curve = SubResource("Curve2D_i7u81")
 position = Vector2(-8, -8)
 
 [node name="EnemyBuilder" parent="." instance=ExtResource("3_v4had")]
-patterns = Array[PackedScene]([ExtResource("5_4rfua"), ExtResource("6_eqba7"), ExtResource("7_6ugo7"), ExtResource("8_peqjb"), ExtResource("9_n53pv")])
+patterns = Array[PackedScene]([ExtResource("10_xxfs3"), ExtResource("7_6ugo7"), ExtResource("5_4rfua"), ExtResource("8_peqjb"), ExtResource("9_n53pv"), ExtResource("6_eqba7")])
 weapons = Array[PackedScene]([ExtResource("5_5jgba"), ExtResource("6_mua22"), ExtResource("9_wvsnl"), ExtResource("8_2c0ef"), ExtResource("9_18a3w")])
 
 [node name="EnemyTimer" type="Timer" parent="."]
