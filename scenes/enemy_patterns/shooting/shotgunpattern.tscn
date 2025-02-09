@@ -9,7 +9,7 @@
 initialSpeed = 275.0
 _shape = SubResource("CircleShape2D_a7l84")
 scale = 0.85
-mask = 2053
+mask = 2057
 collideWithBodies = true
 
 [node name="Shotgun pattern" type="Node2D"]

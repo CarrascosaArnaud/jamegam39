@@ -10,7 +10,7 @@ initialSpeed = 275.0
 _shape = SubResource("CircleShape2D_fvglp")
 scale = 0.5
 maxLifetime = 1.0
-mask = 2053
+mask = 2057
 collideWithBodies = true
 
 [node name="RoundingPattern" type="Node2D"]
