@@ -3,7 +3,7 @@ class_name Speller extends Marker2D
 static var jfk = preload("res://scenes/speller.tscn")
 static var instance;
 
-static func spell(owner, text: String = "An Auto-shot ?!\nNEVER JOHN FITZGERALD KENNEDY WOULD LET THIS HAPPEN !!"):
+static func spell(owner, text: String = "An Auto-shoot ?!\nJOHN FITZGERALD KENNEDY WOULD NEVER HAVE LET THAT HAPPEN!!"):
 	if instance == null:
 		instance = jfk.instantiate()
 		instance.text = text

@@ -16,6 +16,7 @@ var velocity = Vector2.RIGHT
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	connect("area_entered",_area_entered)
+	$AudioStreamPlayer2D.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
