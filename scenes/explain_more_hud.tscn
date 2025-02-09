@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlsdku0o14h22"]
+
+[sub_resource type="GDScript" id="GDScript_xp6p5"]
+script/source = "extends CanvasLayer
+
+
+func _on_explain_more_button_pressed():
+	self.hide()
+	get_parent().show()
+"
+
+[node name="ExplainHud" type="CanvasLayer"]
+script = SubResource("GDScript_xp6p5")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -372.0
+offset_right = 23.0
+offset_bottom = 322.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 29
+text = "You'll take damage if you get hit by any enemy projectile, or if you enter in a collision with an enemy ship.
+
+If you shoot another enemy's bullet, their bullet will get destroyed but not yours.
+
+You'll have a second of invulnerability after each hit taken.
+
+You can teleport to your cursor without cooldown.
+
+The more you score, the more your weapon will upgrade.
+
+The game is meant to be fast. 
+
+The enemy are generated randomly and will spawn faster and faster.
+
+Don't get surrounded."
+horizontal_alignment = 1
+
+[node name="ExplainMoreButton" type="Button" parent="."]
+offset_left = 1794.0
+offset_top = 13.0
+offset_right = 1909.0
+offset_bottom = 44.0
+text = "Back to menu"
+
+[connection signal="pressed" from="ExplainMoreButton" to="." method="_on_explain_more_button_pressed"]

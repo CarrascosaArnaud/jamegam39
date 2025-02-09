@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b4k0a3wk2rowb" path="res://scenes/menu.tscn" id="1_0sxyr"]
 [ext_resource type="PackedScene" uid="uid://dk6vkqorptuc5" path="res://scenes/hud.tscn" id="2_dl72a"]
 [ext_resource type="PackedScene" uid="uid://dnvjyjpwj4qao" path="res://scenes/player.tscn" id="2_yxbxu"]
-[ext_resource type="PackedScene" path="res://scenes/enemyBuilder.tscn" id="3_v4had"]
+[ext_resource type="PackedScene" uid="uid://cm2k5f2q1p0si" path="res://scenes/enemyBuilder.tscn" id="3_v4had"]
 [ext_resource type="PackedScene" uid="uid://cr4uh4usbnc1" path="res://scenes/enemy_patterns/follow_path_circle_forward.tscn" id="5_4rfua"]
 [ext_resource type="PackedScene" uid="uid://pkiiaiycivlg" path="res://scenes/enemy_patterns/straight_line.tscn" id="6_eqba7"]
 [ext_resource type="PackedScene" uid="uid://jvttcvqmw1qh" path="res://scenes/enemy_patterns/shooting/circlespattern.tscn" id="6_mua22"]
@@ -40,6 +40,7 @@ func inc_score():
 
 func game_over():
 	$EnemyTimer.stop()
+	$EnemyTimer.wait_time = 2.7
 	menu_game_over.emit($Player.score)
 	get_tree().call_group(\"enemy\", \"queue_free\")
 

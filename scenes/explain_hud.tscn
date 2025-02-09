@@ -32,44 +32,36 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -22.0
-offset_top = -372.0
+offset_top = -241.0
 offset_right = 23.0
 offset_bottom = 322.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 29
-text = "You'll take damage if you get hit by any enemy projectile, or if you enter in a collision with an enemy ship.
+text = "You can move with directional arrows and WASD, aim and shoot with your left click, and teleport with your right click without cooldown. 
 
-If you shoot another enemy's bullet, their bullet will get destroyed but not yours.
 
-You'll have a second of invulnerability after each hit taken.
+You'll face alot of ennemies and alot of their attacks. 
 
-You can teleport to your cursor without cooldown.
-
-The more you score, the more your weapon will upgrade.
-
-The game is meant to be fast. 
-
-The enemy are generated randomly and will spawn faster and faster.
 
 Don't get surrounded."
 horizontal_alignment = 1
 
 [node name="CheckBox" type="CheckBox" parent="."]
 offset_left = 839.0
-offset_top = 899.0
+offset_top = 681.0
 offset_right = 1075.0
-offset_bottom = 942.0
+offset_bottom = 724.0
 theme_override_font_sizes/font_size = 25
 text = "Don't show again"
 
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(200, 0)
-offset_left = 862.0
-offset_top = 977.0
-offset_right = 1062.0
-offset_bottom = 1020.0
+offset_left = 864.0
+offset_top = 783.0
+offset_right = 1064.0
+offset_bottom = 826.0
 theme_override_font_sizes/font_size = 25
 text = "OK !"
 
