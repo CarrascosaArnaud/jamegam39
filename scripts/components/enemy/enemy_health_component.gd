@@ -18,3 +18,5 @@ func damage(attack: int):
 		AudioManager.mob_death_sound.play()
 		enemy.queue_free()
 		get_tree().current_scene.inc_score()
+	else:
+		AudioManager.enemyDamage.play()
