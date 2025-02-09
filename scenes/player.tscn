@@ -1,26 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnvjyjpwj4qao"]
+[gd_scene load_steps=8 format=3 uid="uid://dnvjyjpwj4qao"]
 
 [ext_resource type="Texture2D" uid="uid://dc2uwig4seb3w" path="res://assets/Ships/ship_H.png" id="1_cjqx6"]
 [ext_resource type="PackedScene" uid="uid://mcdmbi5qjthi" path="res://scenes/components/hitbox_component.tscn" id="2_agsip"]
 [ext_resource type="Script" path="res://scripts/components/player/player_health_component.gd" id="4_0t170"]
-[ext_resource type="PackedScene" uid="uid://dr0peh3q051p0" path="res://scenes/bullet.tscn" id="4_nl3re"]
+[ext_resource type="AudioStream" uid="uid://g46362bcub5v" path="res://assets/audios/fire_bullet.mp3" id="4_am01y"]
 
 [sub_resource type="GDScript" id="GDScript_quhyo"]
 script/source = "extends CharacterBody2D
 
 signal life_update
 signal game_over
+signal update_score_hud
 
 const SPEED = 2500.0
-var fire_rate = 0.3
+var fire_rate = 0.2
 var shooting_cooldown = 0
 var bullet_speed = 3000
 var screen_size
 var jfk = preload(\"res://scenes/speller.tscn\")
+var score = 0
 
 func _ready():
 	screen_size = get_viewport_rect().size
 	#hide()
+func _process(delta):
+	update_score_hud.emit(score)
 
 func _physics_process(delta: float) -> void:
 	if shooting_cooldown > 0: shooting_cooldown -= delta
@@ -45,8 +49,8 @@ func _physics_process(delta: float) -> void:
 		#var tween = create_tween()
 		#tween.tween_property(self, \"global_position\", get_global_mouse_position(), 0.) 
 
-	if Input.is_action_pressed(\"Attack\"):
-		shoot()
+	#if Input.is_action_pressed(\"Attack\"):
+	shoot()
 
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)   
@@ -57,13 +61,18 @@ func _physics_process(delta: float) -> void:
 
 func shoot():
 	if shooting_cooldown <= 0 and self.is_visible():
-		var b : Bullet = Bullet.shoot(global_position, get_global_mouse_position(), bullet_speed, coll_shape_length)
-		if b.velocity.is_zero_approx():
+		var pointer = global_position.direction_to(get_global_mouse_position())
+		if pointer.is_zero_approx():
 			var t = jfk.instantiate()
 			owner.add_child(t)
 		else:
-			owner.add_child(b)
-			shooting_cooldown = fire_rate
+			var nb = 5 if score > 50 else 3 if score > 10 else 1
+			for n in nb:
+				var angle = 25 * ceil((n+1)/2)
+				var b : Bullet = Bullet.shoot(global_position, get_global_mouse_position(), bullet_speed, coll_shape_length,deg_to_rad(angle if n%2 == 0 else -angle))
+				owner.add_child(b)
+			shooting_cooldown = fire_rate * (1 - score/70.00)
+			$AudioStreamPlayer2D.play()
 
 func start(pos):
 	position = pos
@@ -79,6 +88,11 @@ func _on_health_component_player_dead():
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k7snd"]
 radius = 24.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q5x1v"]
+random_pitch = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("4_am01y")
 
 [node name="Player" type="CharacterBody2D"]
 script = SubResource("GDScript_quhyo")
@@ -98,7 +112,8 @@ MAX_HEALTH = 5.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_k7snd")
 
-[node name="Bullet" parent="." instance=ExtResource("4_nl3re")]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_q5x1v")
 
 [connection signal="area_entered" from="HitboxComponent" to="HitboxComponent" method="_on_area_entered"]
 [connection signal="area_exited" from="HitboxComponent" to="HitboxComponent" method="_on_area_exited"]
