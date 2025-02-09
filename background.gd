@@ -5,6 +5,7 @@ extends Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	backgroundPic = []
 	randomBackground() 
 	var timer = Timer.new()
 	timer.wait_time = 10

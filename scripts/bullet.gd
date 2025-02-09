@@ -3,12 +3,16 @@ class_name Bullet extends Area2D
 static var bullet = preload("res://scenes/bullet.tscn")
 static var explo = preload("res://assets/UFO/explo.tscn")
 
-static func shoot(from: Vector2, to: Vector2, at: float, margin: float = 10):
-	var b = bullet.instantiate()
+static func shoot(from: Vector2, to: Vector2, at: float, margin: float, angle: float):
+	var b: Bullet = bullet.instantiate()
 	b.global_position = from
+	if(angle > 0): print(angle)
 	b.look_at(to)
+	b.rotate(angle)
 	b.global_position = from.move_toward(to,margin)
-	b.velocity = from.direction_to(to) * at
+	b.velocity = from.direction_to(to).rotated(angle) * at
+	if b.velocity.is_zero_approx():
+		print("hey")
 	return b
 
 var velocity = Vector2.RIGHT
@@ -16,7 +20,6 @@ var velocity = Vector2.RIGHT
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	connect("area_entered",_area_entered)
-	$AudioStreamPlayer2D.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

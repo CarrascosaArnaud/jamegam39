@@ -1,22 +1,20 @@
-[gd_scene load_steps=23 format=3 uid="uid://kxavomltxyti"]
+[gd_scene load_steps=21 format=3 uid="uid://kxavomltxyti"]
 
 [ext_resource type="PackedScene" uid="uid://b4k0a3wk2rowb" path="res://scenes/menu.tscn" id="1_0sxyr"]
-[ext_resource type="PackedScene" uid="uid://dk6vkqorptuc5" path="res://scenes/hud.tscn" id="2_dl72a"]
+[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="2_dl72a"]
 [ext_resource type="PackedScene" uid="uid://dnvjyjpwj4qao" path="res://scenes/player.tscn" id="2_yxbxu"]
 [ext_resource type="PackedScene" path="res://scenes/enemyBuilder.tscn" id="3_v4had"]
 [ext_resource type="PackedScene" uid="uid://cr4uh4usbnc1" path="res://scenes/enemy_patterns/follow_path_circle_forward.tscn" id="5_4rfua"]
-[ext_resource type="PackedScene" uid="uid://dgr1vd36uh427" path="res://scenes/enemy_patterns/shooting/classicpattern.tscn" id="5_5jgba"]
 [ext_resource type="PackedScene" uid="uid://pkiiaiycivlg" path="res://scenes/enemy_patterns/straight_line.tscn" id="6_eqba7"]
 [ext_resource type="PackedScene" uid="uid://jvttcvqmw1qh" path="res://scenes/enemy_patterns/shooting/circlespattern.tscn" id="6_mua22"]
 [ext_resource type="PackedScene" uid="uid://cbpfcm4610oej" path="res://scenes/enemy_patterns/bouncy_pattern.tscn" id="7_6ugo7"]
 [ext_resource type="PackedScene" uid="uid://c3yarm6een1xw" path="res://scenes/enemy_patterns/shooting/no_pattern.tscn" id="8_2c0ef"]
-[ext_resource type="PackedScene" uid="uid://cbt3carvkp3ou" path="res://scenes/enemy_patterns/follow_player_pattern.tscn" id="8_peqjb"]
+[ext_resource type="PackedScene" path="res://scenes/enemy_patterns/follow_player_pattern.tscn" id="8_peqjb"]
 [ext_resource type="PackedScene" uid="uid://bdx2pu10eplfa" path="res://scenes/enemy_patterns/shooting/shotgunpattern.tscn" id="9_18a3w"]
-[ext_resource type="PackedScene" uid="uid://bu1qiqgd3yqu7" path="res://scenes/enemy_patterns/slide_left_right_pattern.tscn" id="9_n53pv"]
-[ext_resource type="PackedScene" uid="uid://dqv826a2xrk4i" path="res://scenes/background.tscn" id="9_rl2xq"]
+[ext_resource type="PackedScene" path="res://scenes/enemy_patterns/slide_left_right_pattern.tscn" id="9_n53pv"]
+[ext_resource type="PackedScene" path="res://scenes/background.tscn" id="9_rl2xq"]
 [ext_resource type="PackedScene" uid="uid://dgr1vd36uh427" path="res://scenes/enemy_patterns/shooting/homingpattern.tscn" id="9_wvsnl"]
 [ext_resource type="Texture2D" uid="uid://bhq77cfptdcop" path="res://assets/backgrounds/Fading_Sky-Sunset_03-512x512.png" id="10_0rku6"]
-[ext_resource type="PackedScene" uid="uid://dfkgvypwfudvm" path="res://scenes/enemy_patterns/zig_zag_pattern.tscn" id="10_xxfs3"]
 [ext_resource type="Texture2D" uid="uid://b1fog6votxi3b" path="res://assets/backgrounds/Fading_Sky-Sunset_04-512x512.png" id="11_q8ju4"]
 [ext_resource type="Texture2D" uid="uid://cg75e0fpgv7ol" path="res://assets/backgrounds/Fuzzy_Sky-Night_01-512x512.png" id="12_jrndf"]
 [ext_resource type="Texture2D" uid="uid://8t565pvh34ht" path="res://assets/backgrounds/Wispy_Sky-Sunset_01-512x512.png" id="15_jxe2r"]
@@ -27,22 +25,22 @@ script/source = "extends Node
 signal menu_game_over
 signal update_score_hud
 
-var score = 0
 var enemySpawnedPassed = 0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	update_score_hud.emit(score)
+func inc_score():
+	$Player.score += 1
+	update_score_hud.emit($Player.score)
 
 func game_over():
 	$EnemyTimer.stop()
-	menu_game_over.emit(score)
+	menu_game_over.emit($Player.score)
 	get_tree().call_group(\"enemy\", \"queue_free\")
 
 func new_game():
 	get_child(0).hide()
 	get_child(1).show()
-	score = 0
+	$Player.score = 0
+	update_score_hud.emit(0)
 	$Player.start($StartPosition.position)
 	$EnemyTimer.start()
 
@@ -53,7 +51,7 @@ func _on_enemy_timer_timeout():
 	var enemy_spawn_location = $EnemyPath/EnemyPathSpawn
 	enemy_spawn_location.progress_ratio = randf()
 	$EnemyBuilder.generate_random_enemy()
-	
+
 	if enemySpawnedPassed == 5 and $EnemyTimer.wait_time != 0:
 		$EnemyTimer.wait_time = $EnemyTimer.wait_time - 0.25
 		enemySpawnedPassed = 0
@@ -89,8 +87,8 @@ curve = SubResource("Curve2D_i7u81")
 position = Vector2(-8, -8)
 
 [node name="EnemyBuilder" parent="." instance=ExtResource("3_v4had")]
-patterns = Array[PackedScene]([ExtResource("10_xxfs3"), ExtResource("7_6ugo7"), ExtResource("5_4rfua"), ExtResource("8_peqjb"), ExtResource("9_n53pv"), ExtResource("6_eqba7")])
-weapons = Array[PackedScene]([ExtResource("5_5jgba"), ExtResource("6_mua22"), ExtResource("9_wvsnl"), ExtResource("8_2c0ef"), ExtResource("9_18a3w")])
+patterns = Array[PackedScene]([ExtResource("5_4rfua"), ExtResource("6_eqba7"), ExtResource("7_6ugo7"), ExtResource("8_peqjb"), ExtResource("9_n53pv")])
+weapons = Array[PackedScene]([ExtResource("9_wvsnl"), ExtResource("6_mua22"), ExtResource("9_wvsnl"), ExtResource("8_2c0ef"), ExtResource("9_18a3w")])
 
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 2.7
