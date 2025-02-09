@@ -37,6 +37,7 @@ script = SubResource("GDScript_eirpq")
 visible = false
 
 [node name="Menu_Gover" parent="." instance=ExtResource("2_2cmc0")]
+visible = false
 
 [node name="TitleLabel" type="Label" parent="."]
 offset_left = 382.0
@@ -46,16 +47,6 @@ offset_bottom = 295.0
 theme_override_font_sizes/font_size = 100
 text = "Hullet Bell"
 horizontal_alignment = 1
-
-[node name="TitleLabel" type="Label" parent="TitleLabel"]
-layout_mode = 0
-offset_left = -382.0
-offset_top = 638.0
-offset_right = 5818.0
-offset_bottom = 915.0
-theme_override_font_sizes/font_size = 30
-text = "You can move with directional arrows and WASD, aim and shoot with your left click, and teleport with your right click without cooldown. 
-You'll face alot of ennemies and their attacks. Don't get surrounded."
 
 [node name="StartButton" type="Button" parent="."]
 offset_left = 809.0
@@ -80,6 +71,23 @@ offset_right = 1080.0
 offset_bottom = 676.0
 theme_override_font_sizes/font_size = 50
 text = "Settings"
+
+[node name="MsgLabel" type="Label" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -182.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 29
+text = "You can move with directional arrows and WASD, aim and shoot with your left click, and teleport with your right click without cooldown. 
+You'll face alot of ennemies and alot of their attacks. 
+Don't get surrounded."
+horizontal_alignment = 1
 
 [connection signal="score" from="." to="Menu_Gover" method="get_score"]
 [connection signal="hide_hud" from="Menu_Gover" to="." method="_on_menu_gover_hide_hud"]
