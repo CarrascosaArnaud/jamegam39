@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://kxavomltxyti"]
+[gd_scene load_steps=11 format=3 uid="uid://kxavomltxyti"]
 
 [ext_resource type="PackedScene" uid="uid://b4k0a3wk2rowb" path="res://scenes/menu.tscn" id="1_0sxyr"]
 [ext_resource type="PackedScene" uid="uid://dk6vkqorptuc5" path="res://scenes/hud.tscn" id="2_dl72a"]
 [ext_resource type="PackedScene" uid="uid://dnvjyjpwj4qao" path="res://scenes/player.tscn" id="2_yxbxu"]
 [ext_resource type="PackedScene" path="res://scenes/enemyBuilder.tscn" id="3_v4had"]
+[ext_resource type="PackedScene" uid="uid://c3yarm6een1xw" path="res://scenes/enemy_patterns/shooting/no_pattern.tscn" id="5_pgojc"]
+[ext_resource type="PackedScene" uid="uid://jvttcvqmw1qh" path="res://scenes/enemy_patterns/shooting/circlespattern.tscn" id="6_0kvlr"]
+[ext_resource type="PackedScene" uid="uid://dgr1vd36uh427" path="res://scenes/enemy_patterns/shooting/homingpattern.tscn" id="7_jy3yk"]
+[ext_resource type="PackedScene" uid="uid://bdx2pu10eplfa" path="res://scenes/enemy_patterns/shooting/shotgunpattern.tscn" id="8_e5nrt"]
 
 [sub_resource type="GDScript" id="GDScript_36wy4"]
 script/source = "extends Node
@@ -67,6 +71,7 @@ curve = SubResource("Curve2D_i7u81")
 position = Vector2(-8, -8)
 
 [node name="EnemyBuilder" parent="." instance=ExtResource("3_v4had")]
+weapons = Array[PackedScene]([ExtResource("5_pgojc"), ExtResource("6_0kvlr"), ExtResource("7_jy3yk"), ExtResource("8_e5nrt")])
 
 [node name="EnemyTimer" type="Timer" parent="."]
 

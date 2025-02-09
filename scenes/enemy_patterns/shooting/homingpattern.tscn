@@ -26,3 +26,5 @@ rowsInAtlas = 0
 columnsInAtlas = 0
 textureRotation = 270.0
 texture = ExtResource("2_ca108")
+
+[connection signal="bullet_hit" from="Spawner" to="." method="_on_bullet_hit"]

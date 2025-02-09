@@ -12,9 +12,23 @@ const INVINCIBILITY_ALPHA = 0.25
 var timer_invincibility: Timer
 var timer_invincibility_blink: Timer
 var is_invincible: bool
+var timer: Timer
+
+func _on_area_entered(area):
+	damage(1)
+	timer.start()
+
+func _on_area_exited(area):
+	timer.stop()
 
 func _ready() -> void:
 	super()
+	timer = Timer.new()
+	timer.set_one_shot(false)
+	timer.set_wait_time(0.25)
+	timer.timeout.connect(func(): damage(1))
+	add_child(timer)
+	
 	timer_invincibility = Timer.new()
 	timer_invincibility.set_wait_time(1)
 	timer_invincibility.set_one_shot(true)

@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnvjyjpwj4qao"]
+[gd_scene load_steps=7 format=3 uid="uid://dnvjyjpwj4qao"]
 
 [ext_resource type="Texture2D" uid="uid://dc2uwig4seb3w" path="res://assets/Ships/ship_H.png" id="1_cjqx6"]
 [ext_resource type="PackedScene" uid="uid://mcdmbi5qjthi" path="res://scenes/components/hitbox_component.tscn" id="2_agsip"]
-[ext_resource type="PackedScene" uid="uid://m2a3i1mwfuio" path="res://scenes/components/health_component.tscn" id="3_8wfff"]
 [ext_resource type="Script" path="res://scripts/components/player/player_health_component.gd" id="4_0t170"]
 [ext_resource type="PackedScene" uid="uid://dr0peh3q051p0" path="res://scenes/bullet.tscn" id="4_nl3re"]
 
@@ -52,7 +51,7 @@ func _physics_process(delta: float) -> void:
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)   
 	
-	life_update.emit($HealthComponent.health * 10)
+	life_update.emit($HitboxComponent.health * 10)
 
 @onready var coll_shape_length: float = get_node(\"HitboxComponent/CollisionShape2D\").shape.radius 
 
@@ -89,20 +88,17 @@ rotation = 1.5708
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_cjqx6")
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_8wfff")]
+[node name="HitboxComponent" parent="." instance=ExtResource("2_agsip")]
+collision_mask = 2
 script = ExtResource("4_0t170")
 INVINCIBILITY_TIME = 1.0
 MAX_HEALTH = 10.0
-
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("2_agsip")]
-collision_mask = 2
-healthComponent = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_k7snd")
 
 [node name="Bullet" parent="." instance=ExtResource("4_nl3re")]
 
-[connection signal="player_dead" from="HealthComponent" to="." method="_on_health_component_player_dead"]
 [connection signal="area_entered" from="HitboxComponent" to="HitboxComponent" method="_on_area_entered"]
 [connection signal="area_exited" from="HitboxComponent" to="HitboxComponent" method="_on_area_exited"]
+[connection signal="player_dead" from="HitboxComponent" to="." method="_on_health_component_player_dead"]

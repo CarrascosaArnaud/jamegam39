@@ -4,10 +4,6 @@ extends Node2D
 @export var weapons: Array[PackedScene]
 @export var textures: Array[Texture2D]
 
-func _ready() -> void:
-	generate_random_enemy() # <= A commenté si vous lancer depuis la scene Main
-	#pass
-
 func generate_random_enemy():
 	var screenSize = get_viewport_rect().size
 	var side = randi_range(0,3)

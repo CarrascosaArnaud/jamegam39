@@ -24,3 +24,5 @@ maxSpin = 10.0
 minSpin = -10.0
 textureRotation = 270.0
 texture = ExtResource("1_1my0i")
+
+[connection signal="bullet_hit" from="Spawner" to="." method="_on_bullet_hit"]
