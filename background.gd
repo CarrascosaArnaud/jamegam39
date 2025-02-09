@@ -1,4 +1,7 @@
-extends Sprite2D
+extends Node2D
+
+@onready var current_background = $Background
+@onready var prev_background = $Background2
 
 @export var backgroundPic: Array[Texture2D]
 @export var scrollSpeed: float = 20.0
@@ -15,10 +18,20 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	offset.y += scrollSpeed * delta
-	
+	current_background.offset.y += scrollSpeed * delta
+	prev_background.offset.y += scrollSpeed * delta
 
 func randomBackground():
 	if backgroundPic.size()>0:
-		texture = backgroundPic.pick_random()
-		offset.y = 0
+		if current_background.texture != null:
+			prev_background.texture = current_background.texture
+			prev_background.offset.y = current_background.offset.y
+		current_background.texture = backgroundPic.pick_random()
+		current_background.offset.y = 0
+		if prev_background.texture != null:
+			current_background.modulate.a = 0
+			prev_background.modulate.a = 1
+			while current_background.modulate.a < 1:
+				current_background.modulate.a += 0.01
+				prev_background.modulate.a -= 0.01
+				await get_tree().process_frame

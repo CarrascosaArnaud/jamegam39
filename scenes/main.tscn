@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://kxavomltxyti"]
+[gd_scene load_steps=32 format=3 uid="uid://kxavomltxyti"]
 
 [ext_resource type="PackedScene" uid="uid://b4k0a3wk2rowb" path="res://scenes/menu.tscn" id="1_0sxyr"]
 [ext_resource type="PackedScene" uid="uid://dk6vkqorptuc5" path="res://scenes/hud.tscn" id="2_dl72a"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://bxcbkdcbnfwiu" path="res://scenes/explain_hud.tscn" id="19_k65p8"]
 [ext_resource type="Texture2D" uid="uid://dvcxyh8p7n50x" path="res://assets/Enemies/spaceShips_003.png" id="20_70457"]
 [ext_resource type="Texture2D" uid="uid://cwh3nmhbbjyga" path="res://assets/Enemies/spaceShips_006.png" id="23_ostq4"]
+[ext_resource type="Script" path="res://background.gd" id="24_4eser"]
 [ext_resource type="Texture2D" uid="uid://bp56x1erqhot" path="res://assets/Enemies/spaceShips_007.png" id="24_f8ifw"]
 [ext_resource type="Texture2D" uid="uid://4gujecjlhw3t" path="res://assets/Enemies/spaceShips_008.png" id="25_4q3gs"]
 [ext_resource type="Texture2D" uid="uid://c0fnb21s07w8h" path="res://assets/Enemies/spaceShips_009.png" id="26_xnp7g"]
@@ -123,10 +124,21 @@ wait_time = 2.7
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 
-[node name="Background" parent="." instance=ExtResource("9_rl2xq")]
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("24_4eser")
+backgroundPic = Array[Texture2D]([ExtResource("10_0rku6"), ExtResource("11_q8ju4"), ExtResource("12_jrndf"), ExtResource("15_jxe2r")])
+
+[node name="Background" parent="Node2D" instance=ExtResource("9_rl2xq")]
+z_index = -5
 position = Vector2(960, 120)
 scale = Vector2(3.75, 3.75)
-backgroundPic = Array[Texture2D]([ExtResource("10_0rku6"), ExtResource("11_q8ju4"), ExtResource("12_jrndf"), ExtResource("15_jxe2r")])
+script = null
+
+[node name="Background2" parent="Node2D" instance=ExtResource("9_rl2xq")]
+z_index = -3
+position = Vector2(960, 120)
+scale = Vector2(3.75, 3.75)
+script = null
 
 [connection signal="maybe_need_tuto" from="." to="ExplainHud" method="_check"]
 [connection signal="menu_game_over" from="." to="Menu" method="_on_main_menu_game_over"]
