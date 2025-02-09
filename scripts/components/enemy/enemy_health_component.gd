@@ -16,4 +16,5 @@ func damage(attack: int):
 	
 	if (health <= 0):
 		get_tree().current_scene.score += 1
+		AudioManager.mob_death_sound.play()
 		enemy.queue_free()
