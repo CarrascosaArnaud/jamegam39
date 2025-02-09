@@ -43,10 +43,10 @@ Don't get surrounded."
 horizontal_alignment = 1
 
 [node name="ExplainMoreButton" type="Button" parent="."]
-offset_left = 1794.0
+offset_left = 1763.0
 offset_top = 13.0
 offset_right = 1909.0
-offset_bottom = 44.0
+offset_bottom = 57.0
 text = "Back to menu"
 
 [connection signal="pressed" from="ExplainMoreButton" to="." method="_on_explain_more_button_pressed"]
