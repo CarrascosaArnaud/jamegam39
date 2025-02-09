@@ -241,8 +241,8 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Back to menu"
 
-[connection signal="value_changed" from="VBoxContainer/TabContainer/Settings/HSlider" to="VBoxContainer/TabContainer/Settings/HSlider" method="_on_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/TabContainer/Settings/HSlider" to="VBoxContainer/TabContainer/Settings/HSlider" method="on_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Settings/HSlider" to="VBoxContainer/TabContainer/Settings/HSlider" method="_on_value_changed"]
 [connection signal="button_down" from="VBoxContainer/TabContainer/Controls/GridContainer/UpButton" to="." method="_on_up_button_button_down"]
 [connection signal="button_down" from="VBoxContainer/TabContainer/Controls/GridContainer/DownButton" to="." method="_on_down_button_button_down"]
 [connection signal="button_down" from="VBoxContainer/TabContainer/Controls/GridContainer/LeftButton" to="." method="_on_left_button_button_down"]
