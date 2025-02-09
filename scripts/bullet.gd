@@ -17,6 +17,7 @@ var velocity = Vector2.RIGHT
 func _ready():
 	connect("area_entered",_area_entered)
 	connect("body_entered",_body_entered)
+	$AudioStreamPlayer2D.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

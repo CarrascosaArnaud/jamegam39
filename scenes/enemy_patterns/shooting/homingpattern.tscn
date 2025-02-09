@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgr1vd36uh427"]
+[gd_scene load_steps=5 format=3 uid="uid://higkjew1npxt"]
 
 [ext_resource type="Script" path="res://player_tracker_component.gd" id="1_trv6v"]
 [ext_resource type="Texture2D" uid="uid://xn8hgfqcshgq" path="res://assets/SpaceShooter/Missiles/spaceMissiles_001.png" id="2_vvutn"]
