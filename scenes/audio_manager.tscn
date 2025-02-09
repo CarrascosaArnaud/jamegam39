@@ -4,8 +4,8 @@
 [ext_resource type="AudioStream" uid="uid://dccfqc3mlgcxa" path="res://assets/audios/Purple.mp3" id="1_harim"]
 [ext_resource type="AudioStream" uid="uid://d1ccvwiua0lgd" path="res://assets/audios/damage-40114.mp3" id="2_p8y4k"]
 [ext_resource type="AudioStream" uid="uid://c08f4vgmaojgh" path="res://assets/audios/Purple2_1.mp3" id="2_wl1ue"]
-[ext_resource type="AudioStream" uid="uid://c0rojns7ff7h0" path="res://assets/audios/naunauu gamejam 3 2.mp3" id="4_186bd"]
 [ext_resource type="AudioStream" uid="uid://b5d1np6oqbnd7" path="res://assets/audios/explosion.mp3" id="4_eh4k2"]
+[ext_resource type="AudioStream" uid="uid://pfvflx23numo" path="res://assets/audios/naunauu gamejam 3.mp3" id="5_1ih4c"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uujdx"]
 random_pitch = 1.4
@@ -38,7 +38,8 @@ volume_db = -12.0
 pitch_scale = 1.2
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_186bd")
+stream = ExtResource("5_1ih4c")
+volume_db = -3.0
 autoplay = true
 
 [node name="Damage" type="AudioStreamPlayer" parent="."]
