@@ -2,12 +2,13 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://qds4mm4vc0hk"
-valid=false
+uid="uid://dccfqc3mlgcxa"
+path="res://.godot/imported/Purple.mp3-90611c3b5c52accf8c5a3f0646b58dbc.mp3str"
 
 [deps]
 
 source_file="res://assets/audios/Purple.mp3"
+dest_files=["res://.godot/imported/Purple.mp3-90611c3b5c52accf8c5a3f0646b58dbc.mp3str"]
 
 [params]
 
