@@ -1,14 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://kxavomltxyti"]
+[gd_scene load_steps=16 format=3 uid="uid://kxavomltxyti"]
 
 [ext_resource type="PackedScene" uid="uid://b4k0a3wk2rowb" path="res://scenes/menu.tscn" id="1_0sxyr"]
 [ext_resource type="PackedScene" uid="uid://dk6vkqorptuc5" path="res://scenes/hud.tscn" id="2_dl72a"]
 [ext_resource type="PackedScene" uid="uid://dnvjyjpwj4qao" path="res://scenes/player.tscn" id="2_yxbxu"]
-[ext_resource type="PackedScene" path="res://scenes/enemyBuilder.tscn" id="3_v4had"]
+[ext_resource type="PackedScene" uid="uid://cm2k5f2q1p0si" path="res://scenes/enemyBuilder.tscn" id="3_v4had"]
 [ext_resource type="PackedScene" uid="uid://c3yarm6een1xw" path="res://scenes/enemy_patterns/shooting/no_pattern.tscn" id="5_pgojc"]
 [ext_resource type="PackedScene" uid="uid://jvttcvqmw1qh" path="res://scenes/enemy_patterns/shooting/circlespattern.tscn" id="6_0kvlr"]
 [ext_resource type="PackedScene" uid="uid://dgr1vd36uh427" path="res://scenes/enemy_patterns/shooting/homingpattern.tscn" id="7_jy3yk"]
 [ext_resource type="PackedScene" uid="uid://bdx2pu10eplfa" path="res://scenes/enemy_patterns/shooting/shotgunpattern.tscn" id="8_e5nrt"]
-[ext_resource type="PackedScene" path="res://scenes/background.tscn" id="9_rl2xq"]
+[ext_resource type="PackedScene" uid="uid://dqv826a2xrk4i" path="res://scenes/background.tscn" id="9_rl2xq"]
+[ext_resource type="Texture2D" uid="uid://bhq77cfptdcop" path="res://assets/backgrounds/Fading_Sky-Sunset_03-512x512.png" id="10_0rku6"]
+[ext_resource type="Texture2D" uid="uid://b1fog6votxi3b" path="res://assets/backgrounds/Fading_Sky-Sunset_04-512x512.png" id="11_q8ju4"]
+[ext_resource type="Texture2D" uid="uid://cg75e0fpgv7ol" path="res://assets/backgrounds/Fuzzy_Sky-Night_01-512x512.png" id="12_jrndf"]
+[ext_resource type="Texture2D" uid="uid://8t565pvh34ht" path="res://assets/backgrounds/Wispy_Sky-Sunset_01-512x512.png" id="15_jxe2r"]
 
 [sub_resource type="GDScript" id="GDScript_36wy4"]
 script/source = "extends Node
@@ -17,6 +21,7 @@ signal menu_game_over
 signal update_score_hud
 
 var score = 0
+var enemySpawnedPassed = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -41,10 +46,12 @@ func _on_enemy_timer_timeout():
 	var enemy_spawn_location = $EnemyPath/EnemyPathSpawn
 	enemy_spawn_location.progress_ratio = randf()
 	$EnemyBuilder.generate_random_enemy()
-
-
-func _on_enemy_timer_end_game_timeout():
-	$EnemyTimer.wait_time = 0.1
+	
+	if enemySpawnedPassed == 5 and $EnemyTimer.wait_time != 0:
+		$EnemyTimer.wait_time = $EnemyTimer.wait_time - 0.25
+		enemySpawnedPassed = 0
+	else :
+		enemySpawnedPassed += 1
 "
 
 [sub_resource type="Curve2D" id="Curve2D_i7u81"]
@@ -57,7 +64,6 @@ point_count = 5
 script = SubResource("GDScript_36wy4")
 
 [node name="Menu" parent="." instance=ExtResource("1_0sxyr")]
-visible = true
 
 [node name="HUD" parent="." instance=ExtResource("2_dl72a")]
 visible = false
@@ -79,18 +85,15 @@ position = Vector2(-8, -8)
 weapons = Array[PackedScene]([ExtResource("5_pgojc"), ExtResource("6_0kvlr"), ExtResource("7_jy3yk"), ExtResource("8_e5nrt")])
 
 [node name="EnemyTimer" type="Timer" parent="."]
-wait_time = 3.0
-
-[node name="EnemyTimerEndGame" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 2.7
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 
 [node name="Background" parent="." instance=ExtResource("9_rl2xq")]
-z_index = -5
 position = Vector2(960, 120)
 scale = Vector2(3.75, 3.75)
+backgroundPic = Array[Texture2D]([ExtResource("10_0rku6"), ExtResource("11_q8ju4"), ExtResource("12_jrndf"), ExtResource("15_jxe2r")])
 
 [connection signal="menu_game_over" from="." to="Menu" method="_on_main_menu_game_over"]
 [connection signal="update_score_hud" from="." to="HUD" method="_score_update"]
@@ -99,4 +102,3 @@ scale = Vector2(3.75, 3.75)
 [connection signal="game_over" from="Player" to="." method="game_over"]
 [connection signal="life_update" from="Player" to="HUD" method="_on_player_life_update"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
-[connection signal="timeout" from="EnemyTimerEndGame" to="." method="_on_enemy_timer_end_game_timeout"]

@@ -31,7 +31,6 @@ func _on_main_menu_game_over(value : int):
 "
 
 [node name="Menu" type="CanvasLayer"]
-visible = false
 script = SubResource("GDScript_eirpq")
 
 [node name="Menu_Settings" parent="." instance=ExtResource("1_ali3u")]
@@ -47,6 +46,15 @@ offset_bottom = 295.0
 theme_override_font_sizes/font_size = 100
 text = "JameGam39"
 horizontal_alignment = 1
+
+[node name="TitleLabel" type="Label" parent="TitleLabel"]
+offset_left = -382.0
+offset_top = 638.0
+offset_right = 5818.0
+offset_bottom = 915.0
+theme_override_font_sizes/font_size = 30
+text = "You can move with directional arrows and WASD, aim and shoot with your left click, and teleport with right click every 5 seconds.
+You'll face alot of ennemies and their attacks. Don't get surrounded."
 
 [node name="StartButton" type="Button" parent="."]
 offset_left = 809.0
