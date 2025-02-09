@@ -7,7 +7,6 @@
 
 [sub_resource type="BulletType" id="BulletType_b500l"]
 _shape = SubResource("CircleShape2D_fvglp")
-scale = 0.75
 maxLifetime = 4.0
 mask = 5
 
