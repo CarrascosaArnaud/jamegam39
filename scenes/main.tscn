@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://kxavomltxyti"]
+[gd_scene load_steps=32 format=3 uid="uid://kxavomltxyti"]
 
 [ext_resource type="PackedScene" uid="uid://b4k0a3wk2rowb" path="res://scenes/menu.tscn" id="1_0sxyr"]
 [ext_resource type="PackedScene" uid="uid://dk6vkqorptuc5" path="res://scenes/hud.tscn" id="2_dl72a"]
@@ -7,19 +7,28 @@
 [ext_resource type="PackedScene" uid="uid://cr4uh4usbnc1" path="res://scenes/enemy_patterns/follow_path_circle_forward.tscn" id="5_4rfua"]
 [ext_resource type="PackedScene" uid="uid://pkiiaiycivlg" path="res://scenes/enemy_patterns/straight_line.tscn" id="6_eqba7"]
 [ext_resource type="PackedScene" uid="uid://jvttcvqmw1qh" path="res://scenes/enemy_patterns/shooting/circlespattern.tscn" id="6_mua22"]
-[ext_resource type="PackedScene" uid="uid://uh6571fgaop7" path="res://scenes/enemy_patterns/bouncy_pattern.tscn" id="7_6ugo7"]
-[ext_resource type="PackedScene" path="res://scenes/enemy_patterns/shooting/no_pattern.tscn" id="8_2c0ef"]
+[ext_resource type="PackedScene" uid="uid://cbpfcm4610oej" path="res://scenes/enemy_patterns/bouncy_pattern.tscn" id="7_6ugo7"]
+[ext_resource type="PackedScene" uid="uid://c3yarm6een1xw" path="res://scenes/enemy_patterns/shooting/no_pattern.tscn" id="8_2c0ef"]
 [ext_resource type="PackedScene" uid="uid://cbt3carvkp3ou" path="res://scenes/enemy_patterns/follow_player_pattern.tscn" id="8_peqjb"]
 [ext_resource type="PackedScene" uid="uid://bdx2pu10eplfa" path="res://scenes/enemy_patterns/shooting/shotgunpattern.tscn" id="9_18a3w"]
 [ext_resource type="PackedScene" uid="uid://bu1qiqgd3yqu7" path="res://scenes/enemy_patterns/slide_left_right_pattern.tscn" id="9_n53pv"]
 [ext_resource type="PackedScene" uid="uid://dqv826a2xrk4i" path="res://scenes/background.tscn" id="9_rl2xq"]
 [ext_resource type="Texture2D" uid="uid://bhq77cfptdcop" path="res://assets/backgrounds/Fading_Sky-Sunset_03-512x512.png" id="10_0rku6"]
-[ext_resource type="PackedScene" path="res://scenes/enemy_patterns/zig_zag_pattern.tscn" id="11_ghcuc"]
+[ext_resource type="PackedScene" uid="uid://dfkgvypwfudvm" path="res://scenes/enemy_patterns/zig_zag_pattern.tscn" id="11_ghcuc"]
 [ext_resource type="Texture2D" uid="uid://b1fog6votxi3b" path="res://assets/backgrounds/Fading_Sky-Sunset_04-512x512.png" id="11_q8ju4"]
 [ext_resource type="Texture2D" uid="uid://cg75e0fpgv7ol" path="res://assets/backgrounds/Fuzzy_Sky-Night_01-512x512.png" id="12_jrndf"]
+[ext_resource type="PackedScene" uid="uid://dgr1vd36uh427" path="res://scenes/enemy_patterns/shooting/homingpattern.tscn" id="14_2wdoi"]
 [ext_resource type="Texture2D" uid="uid://8t565pvh34ht" path="res://assets/backgrounds/Wispy_Sky-Sunset_01-512x512.png" id="15_jxe2r"]
-[ext_resource type="PackedScene" uid="uid://dgr1vd36uh427" path="res://scenes/enemy_patterns/shooting/homingpattern.tscn" id="16_y2v0b"]
-[ext_resource type="PackedScene" uid="uid://bxcbkdcbnfwiu" path="res://scenes/explain_hud.tscn" id="19_k65p8"]
+[ext_resource type="PackedScene" uid="uid://dgr1vd36uh427" path="res://scenes/enemy_patterns/shooting/classicpattern.tscn" id="16_y2v0b"]
+[ext_resource type="PackedScene" uid="uid://7ivgxqbme2dv" path="res://scenes/enemy_patterns/shooting/rounding_pattern.tscn" id="17_cups5"]
+[ext_resource type="Texture2D" uid="uid://bkkgqxa4210hi" path="res://assets/Enemies/spaceShips_001.png" id="18_txtnu"]
+[ext_resource type="Texture2D" uid="uid://etrg3tmm8iyx" path="res://assets/Enemies/spaceShips_002.png" id="19_1b1ne"]
+[ext_resource type="PackedScene" path="res://scenes/explain_hud.tscn" id="19_k65p8"]
+[ext_resource type="Texture2D" uid="uid://dvcxyh8p7n50x" path="res://assets/Enemies/spaceShips_003.png" id="20_70457"]
+[ext_resource type="Texture2D" uid="uid://cwh3nmhbbjyga" path="res://assets/Enemies/spaceShips_006.png" id="23_ostq4"]
+[ext_resource type="Texture2D" uid="uid://bp56x1erqhot" path="res://assets/Enemies/spaceShips_007.png" id="24_f8ifw"]
+[ext_resource type="Texture2D" uid="uid://4gujecjlhw3t" path="res://assets/Enemies/spaceShips_008.png" id="25_4q3gs"]
+[ext_resource type="Texture2D" uid="uid://c0fnb21s07w8h" path="res://assets/Enemies/spaceShips_009.png" id="26_xnp7g"]
 
 [sub_resource type="GDScript" id="GDScript_36wy4"]
 script/source = "extends Node
@@ -105,8 +114,9 @@ curve = SubResource("Curve2D_i7u81")
 position = Vector2(-8, -8)
 
 [node name="EnemyBuilder" parent="." instance=ExtResource("3_v4had")]
-patterns = Array[PackedScene]([ExtResource("5_4rfua"), ExtResource("6_eqba7"), ExtResource("7_6ugo7"), ExtResource("8_peqjb"), ExtResource("9_n53pv"), ExtResource("11_ghcuc")])
-weapons = Array[PackedScene]([ExtResource("16_y2v0b"), ExtResource("6_mua22"), ExtResource("16_y2v0b"), ExtResource("8_2c0ef"), ExtResource("9_18a3w"), ExtResource("16_y2v0b")])
+patterns = Array[PackedScene]([ExtResource("7_6ugo7"), ExtResource("5_4rfua"), ExtResource("8_peqjb"), ExtResource("9_n53pv"), ExtResource("6_eqba7"), ExtResource("11_ghcuc")])
+weapons = Array[PackedScene]([ExtResource("6_mua22"), ExtResource("16_y2v0b"), ExtResource("14_2wdoi"), ExtResource("8_2c0ef"), ExtResource("17_cups5"), ExtResource("9_18a3w")])
+textures = Array[Texture2D]([ExtResource("18_txtnu"), ExtResource("19_1b1ne"), ExtResource("20_70457"), ExtResource("23_ostq4"), ExtResource("24_f8ifw"), ExtResource("25_4q3gs"), ExtResource("26_xnp7g")])
 
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 2.7
