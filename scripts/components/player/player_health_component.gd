@@ -66,7 +66,7 @@ func damage(attack: int):
 	
 	super(attack)
 	
-	if health == 3:
+	if health == 1:
 		var c = car.instantiate() as Enemy
 		c.global_position = global_position
 		owner.owner.add_child(c)
