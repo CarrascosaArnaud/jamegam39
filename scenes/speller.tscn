@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dw3ivn5h1trex"]
+[gd_scene load_steps=3 format=3 uid="uid://dw3ivn5h1trex"]
 
 [ext_resource type="Script" path="res://Speller.gd" id="1_73ekw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_spk2c"]
+font_size = 40
 
 [node name="Speller" type="Marker2D" node_paths=PackedStringArray("label")]
 script = ExtResource("1_73ekw")
@@ -10,3 +13,4 @@ label = NodePath("Label")
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_spk2c")

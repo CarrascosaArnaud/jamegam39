@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp6dow28dxt6y"]
+[gd_scene load_steps=5 format=3 uid="uid://7ivgxqbme2dv"]
 
 [ext_resource type="Script" path="res://scripts/components/shooting_pattern.gd" id="1_b2wb2"]
 [ext_resource type="Texture2D" uid="uid://bqm7isby6caw7" path="res://assets/SpaceShooter/Missiles/spaceMissiles_006.png" id="2_lp5qs"]

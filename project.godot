@@ -29,7 +29,10 @@ window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="viewport"
 mouse_cursor/custom_image="res://assets/cursor.png"
-mouse_cursor/custom_image_hotspot=Vector2(17.5, 0)
+mouse_cursor/custom_image_hotspot=Vector2(17.5, 17.5)
+mouse_cursor/size/viewport_height=1080
+mouse_cursor/size/viewport_width=1920
+mouse_cursor/size/mode=3
 
 [input]
 
