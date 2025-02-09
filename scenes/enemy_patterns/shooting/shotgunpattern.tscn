@@ -25,6 +25,7 @@ startTowardPlayer = true
 staysTowardPlayer = true
 offsetTowardPlayer = -45.0
 textureRotation = 270.0
+z_index = 5
 texture = ExtResource("2_lp1ih")
 
 [connection signal="bullet_hit" from="Spawner" to="." method="_on_bullet_hit"]
