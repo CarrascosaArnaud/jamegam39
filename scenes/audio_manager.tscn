@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://04mmi5pnhk35"]
+[gd_scene load_steps=6 format=3 uid="uid://04mmi5pnhk35"]
 
 [ext_resource type="Script" path="res://scenes/audio_manager.gd" id="1_6kjab"]
 [ext_resource type="AudioStream" uid="uid://dccfqc3mlgcxa" path="res://assets/audios/Purple.mp3" id="1_harim"]
 [ext_resource type="AudioStream" uid="uid://c08f4vgmaojgh" path="res://assets/audios/Purple2_1.mp3" id="2_wl1ue"]
+[ext_resource type="AudioStream" uid="uid://c0rojns7ff7h0" path="res://assets/audios/naunauu gamejam 3 2.mp3" id="4_186bd"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uujdx"]
 streams_count = 2
@@ -21,4 +22,5 @@ pitch_scale = 0.95
 stream = SubResource("AudioStreamRandomizer_uujdx")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_uujdx")
+stream = ExtResource("4_186bd")
+autoplay = true
