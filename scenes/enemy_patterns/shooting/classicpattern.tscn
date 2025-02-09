@@ -6,6 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_fvglp"]
 
 [sub_resource type="BulletType" id="BulletType_b500l"]
+initialSpeed = 300.0
 _shape = SubResource("CircleShape2D_fvglp")
 scale = 0.75
 maxLifetime = 5.0
@@ -20,8 +21,6 @@ bulletType = SubResource("BulletType_b500l")
 fireRate = 1.5
 restartAtSpin = false
 trackedNode = NodePath(".")
-homing = true
-homingWeight = 2.0
 startTowardPlayer = true
 staysTowardPlayer = true
 textureRotation = 270.0
