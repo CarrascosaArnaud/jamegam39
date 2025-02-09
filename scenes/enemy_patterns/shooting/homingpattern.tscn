@@ -14,6 +14,7 @@ mask = 5
 script = ExtResource("1_trv6v")
 
 [node name="Spawner" type="Spawner" parent="." node_paths=PackedStringArray("trackedNode")]
+spawnerMode = 1
 bulletType = SubResource("BulletType_b500l")
 fireRate = 1.5
 restartAtSpin = false
