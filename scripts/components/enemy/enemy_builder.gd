@@ -17,14 +17,13 @@ func generate_random_enemy():
 	var weapon = weapons[rng.randi_range(0, weapons.size() - 1)]
 	match side:
 		0:  # Haut
-			pattern.global_position = Vector2(randi_range(0, screenSize.x), -10)
+			pattern.global_position = Vector2(randi_range(0, screenSize.x), -50)
 		1:  # Bas
-			pattern.global_position = Vector2(randi_range(0, screenSize.x), screenSize.y + 10)
+			pattern.global_position = Vector2(randi_range(0, screenSize.x), screenSize.y + 50)
 		2:  # Gauche
-			pattern.global_position = Vector2(-10, randi_range(0, screenSize.y))
+			pattern.global_position = Vector2(-50, randi_range(0, screenSize.y))
 		3:  # Droite
-			pattern.global_position = Vector2(screenSize.x + 10, randi_range(0, screenSize.y))
-	pattern.global_position
+			pattern.global_position = Vector2(screenSize.x + 50, randi_range(0, screenSize.y))
 	var player = get_tree().current_scene.find_child("Player")
 	var direction = pattern.global_position.direction_to(player.global_position)
 	pattern.load_player(texture, weapon, direction)

@@ -6,6 +6,7 @@ extends Enemy
 
 var state_bounce_x = null
 var state_bounce_y = null
+var is_out_screen: bool
 
 func _ready() -> void:
 	super()
@@ -16,10 +17,27 @@ func _ready() -> void:
 	bottom_right = camera.global_position + Vector2(viewport_rect.size.x / 2, viewport_rect.size.y / 2)
 	
 	direction = direction.normalized()
+	
+	if (self.global_position.x <= top_left.x ||
+	self.global_position.y <= top_left.y ||
+	self.global_position.x >= bottom_right.x ||
+	self.global_position.y >= bottom_right.y):
+		is_out_screen = true
+
+func _physics_process(delta: float) -> void:
+	self.linear_velocity = direction * speed * delta * 100
 
 func _process(delta: float) -> void:
+	if (is_out_screen):
+		if (self.global_position.x > top_left.x &&
+		self.global_position.y > top_left.y &&
+		self.global_position.x < bottom_right.x &&
+		self.global_position.y < bottom_right.y):
+			is_out_screen = false
+		else:
+			return;
+	
 	super(delta)
-	self.linear_velocity = direction * speed * delta * 100
 	if (follow_rotation && spriteContainer != null):
 		spriteContainer.rotation = atan2(-direction.x, direction.y)
 	if (self.global_position.x <= top_left.x && state_bounce_x != "left"):

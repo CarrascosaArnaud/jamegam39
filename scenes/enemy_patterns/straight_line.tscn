@@ -1,20 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://pkiiaiycivlg"]
+[gd_scene load_steps=6 format=3 uid="uid://pkiiaiycivlg"]
 
 [ext_resource type="Script" path="res://scripts/components/pattern/move_forward.gd" id="1_pe0dd"]
+[ext_resource type="Script" path="res://scripts/components/enemy/enemy_health_component.gd" id="2_txy7o"]
+[ext_resource type="Shader" path="res://opaque.gdshader" id="3_aqjug"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mopa6"]
+shader = ExtResource("3_aqjug")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0auqk"]
 radius = 94.0213
 
-[node name="PatternForward" type="RigidBody2D" groups=["enemy"]]
+[node name="PatternForward" type="RigidBody2D" node_paths=PackedStringArray("a") groups=["enemy"]]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_pe0dd")
+a = NodePath("Area2D")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 z_index = 3
 scale = Vector2(0.5, 0.5)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("enemy", "sprite")]
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("2_txy7o")
+enemy = NodePath("..")
+opaque_shader = SubResource("ShaderMaterial_mopa6")
+sprite = NodePath("../Sprite")
+MAX_HEALTH = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 rotation = -2.35619

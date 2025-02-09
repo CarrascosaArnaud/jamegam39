@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bu1qiqgd3yqu7"]
+[gd_scene load_steps=7 format=3 uid="uid://bu1qiqgd3yqu7"]
 
 [ext_resource type="Script" path="res://scripts/components/pattern/follow_path_2D.gd" id="1_13i2l"]
-[ext_resource type="Texture2D" uid="uid://bkkgqxa4210hi" path="res://assets/Enemies/spaceShips_001.png" id="2_jo6x7"]
+[ext_resource type="Script" path="res://scripts/components/enemy/enemy_health_component.gd" id="3_2xxf8"]
+[ext_resource type="Shader" path="res://opaque.gdshader" id="4_0xhw5"]
 
 [sub_resource type="Curve2D" id="Curve2D_m4cpe"]
 _data = {
@@ -9,13 +10,17 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ut2ej"]
+shader = ExtResource("4_0xhw5")
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ik58"]
 radius = 94.0213
 
-[node name="PatternSlideLeftRight" type="Path2D" groups=["enemy"]]
+[node name="SlideLeftRightPattern" type="Path2D" node_paths=PackedStringArray("a") groups=["enemy"]]
 curve = SubResource("Curve2D_m4cpe")
 script = ExtResource("1_13i2l")
 speed = 350
+a = NodePath("PathFollow2D/Area2D")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 rotation = 2.35619
@@ -26,11 +31,15 @@ loop = false
 z_index = 3
 rotation = -2.35619
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_jo6x7")
 
-[node name="Area2D" type="Area2D" parent="PathFollow2D"]
+[node name="Area2D" type="Area2D" parent="PathFollow2D" node_paths=PackedStringArray("enemy", "sprite")]
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("3_2xxf8")
+enemy = NodePath("../..")
+opaque_shader = SubResource("ShaderMaterial_ut2ej")
+sprite = NodePath("../Sprite")
+MAX_HEALTH = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Area2D"]
 rotation = -2.35619

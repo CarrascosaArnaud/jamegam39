@@ -1,17 +1,39 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3lgevswqjm2g"]
+[gd_scene load_steps=19 format=3 uid="uid://c3lgevswqjm2g"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_6wk8s"]
 [ext_resource type="PackedScene" uid="uid://dnvjyjpwj4qao" path="res://scenes/player.tscn" id="2_1mq22"]
 [ext_resource type="PackedScene" uid="uid://cbt3carvkp3ou" path="res://scenes/enemy_patterns/follow_player_pattern.tscn" id="2_dgh2c"]
 [ext_resource type="Script" path="res://scripts/components/enemy/enemy_builder.gd" id="2_dk8p7"]
 [ext_resource type="Texture2D" uid="uid://bkkgqxa4210hi" path="res://assets/Enemies/spaceShips_001.png" id="3_c4rb3"]
-[ext_resource type="PackedScene" uid="uid://dgr1vd36uh427" path="res://scenes/enemy_patterns/shooting/classicpattern.tscn" id="3_idr1h"]
+[ext_resource type="Script" path="res://scripts/components/pattern/move_forward_bouncy_camera.gd" id="4_xhd0a"]
+[ext_resource type="PackedScene" uid="uid://cr4uh4usbnc1" path="res://scenes/enemy_patterns/follow_path_circle_forward.tscn" id="5_j4x8l"]
 [ext_resource type="Texture2D" uid="uid://etrg3tmm8iyx" path="res://assets/Enemies/spaceShips_002.png" id="5_o6p87"]
+[ext_resource type="Script" path="res://scripts/components/enemy/enemy_health_component.gd" id="5_p46a1"]
 [ext_resource type="PackedScene" uid="uid://jvttcvqmw1qh" path="res://scenes/enemy_patterns/shooting/circlespattern.tscn" id="5_q0i0r"]
-[ext_resource type="PackedScene" path="res://scenes/enemy_patterns/shooting/no_pattern.tscn" id="5_xg2f3"]
-[ext_resource type="PackedScene" uid="uid://bdx2pu10eplfa" path="res://scenes/enemy_patterns/shooting/shotgunpattern.tscn" id="6_7uo0x"]
+[ext_resource type="PackedScene" uid="uid://c3yarm6een1xw" path="res://scenes/enemy_patterns/shooting/no_pattern.tscn" id="5_xg2f3"]
+[ext_resource type="PackedScene" uid="uid://bu1qiqgd3yqu7" path="res://scenes/enemy_patterns/slide_left_right_pattern.tscn" id="6_tx0kl"]
+[ext_resource type="Shader" path="res://opaque.gdshader" id="6_u2j2u"]
+[ext_resource type="PackedScene" uid="uid://pkiiaiycivlg" path="res://scenes/enemy_patterns/straight_line.tscn" id="7_qjohu"]
 [ext_resource type="Texture2D" uid="uid://dvcxyh8p7n50x" path="res://assets/Enemies/spaceShips_003.png" id="7_xu0ka"]
-[ext_resource type="PackedScene" uid="uid://dqv826a2xrk4i" path="res://scenes/background.tscn" id="11_um4ba"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0g6oh"]
+shader = ExtResource("6_u2j2u")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lam25"]
+radius = 94.0213
+
+[sub_resource type="PackedScene" id="PackedScene_a8bmg"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("BouncyPattern", "collision_layer", "collision_mask", "script", "speed", "direction", "a", "enemy", "RigidBody2D", "Sprite", "z_index", "scale", "Sprite2D", "Area2D", "opaque_shader", "sprite", "MAX_HEALTH", "CollisionShape2D", "rotation", "shape"),
+"node_count": 4,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 8, 0, -1, 6, 1, 0, 2, 0, 3, 1, 4, 2, 5, 3, 1073741830, 4, 1, 7, 0, 0, 12, 9, -1, 2, 10, 5, 11, 6, 0, 0, 0, 13, 13, -1, 7, 1, 7, 2, 7, 3, 8, 1073741831, 9, 14, 10, 1073741839, 11, 16, 12, 0, 2, 0, 17, 17, -1, 3, 18, 13, 11, 6, 19, 14, 0),
+"variants": [0, ExtResource("4_xhd0a"), 350, Vector2(-1, 0.5), NodePath("Area2D"), 3, Vector2(0.5, 0.5), 2, ExtResource("5_p46a1"), NodePath(".."), SubResource("ShaderMaterial_0g6oh"), NodePath("../Sprite"), 2.0, -2.35619, SubResource("CircleShape2D_lam25")],
+"version": 3
+}
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_6wk8s")
@@ -19,16 +41,13 @@ script = ExtResource("1_6wk8s")
 [node name="EnemyBuilder" type="Node2D" parent="."]
 position = Vector2(103, 78)
 script = ExtResource("2_dk8p7")
-patterns = Array[PackedScene]([ExtResource("2_dgh2c")])
-weapons = Array[PackedScene]([ExtResource("3_idr1h"), ExtResource("5_q0i0r"), ExtResource("5_xg2f3"), ExtResource("6_7uo0x")])
+patterns = Array[PackedScene]([ExtResource("2_dgh2c"), SubResource("PackedScene_a8bmg"), ExtResource("5_j4x8l"), ExtResource("6_tx0kl"), ExtResource("7_qjohu")])
+weapons = Array[PackedScene]([ExtResource("5_xg2f3"), ExtResource("5_q0i0r")])
 textures = Array[Texture2D]([ExtResource("3_c4rb3"), ExtResource("5_o6p87"), ExtResource("7_xu0ka")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 
 [node name="Player" parent="." instance=ExtResource("2_1mq22")]
+z_index = 5
 position = Vector2(793, 456)
-
-[node name="Background" parent="." instance=ExtResource("11_um4ba")]
-position = Vector2(960, 120)
-scale = Vector2(3.75, 3.75)

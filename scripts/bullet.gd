@@ -16,7 +16,6 @@ var velocity = Vector2.RIGHT
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	connect("area_entered",_area_entered)
-	connect("body_entered",_body_entered)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,17 +23,10 @@ func _process(delta):
 	translate(velocity * delta)
 
 func _area_entered(area):
-	print(area.name + " touché !")
 	var e = explo.instantiate()
 	e.global_position = global_position
 	parent.add_child(e)
 	parent.remove_child(self)
-	queue_free()
-	
-func _body_entered(area):
-	print(area.name + " touché !")
-	var e = explo.instantiate()
-	e.global_position = global_position
-	parent.add_child(e)
-	parent.remove_child(self)
+	if (area as HealthComponent):
+		(area as HealthComponent).damage(1)
 	queue_free()

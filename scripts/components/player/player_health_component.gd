@@ -34,7 +34,6 @@ func invincible_blink():
 		sprite.modulate.a = INVINCIBILITY_ALPHA
 
 func set_invincible(new_is_invincible: bool):
-	print("Is invincible : ", new_is_invincible)
 	is_invincible = new_is_invincible
 	if (is_invincible):
 		timer_invincibility_blink.start()

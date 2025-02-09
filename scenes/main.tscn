@@ -22,7 +22,6 @@ func game_over():
 	menu_game_over.emit(score)
 	get_tree().call_group(\"enemy\", \"queue_free\")
 
-
 func new_game():
 	get_child(0).hide()
 	get_child(1).show()
@@ -30,15 +29,13 @@ func new_game():
 	$Player.start($StartPosition.position)
 	$EnemyTimer.start()
 
-
 func _on_menu_start_game():
 	new_game()
-
 
 func _on_enemy_timer_timeout():
 	var enemy_spawn_location = $EnemyPath/EnemyPathSpawn
 	enemy_spawn_location.progress_ratio = randf()
-	get_child(5).generate_random_enemy(enemy_spawn_location.position)
+	$EnemyBuilder.generate_random_enemy()
 "
 
 [sub_resource type="Curve2D" id="Curve2D_i7u81"]
