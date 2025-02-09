@@ -88,6 +88,7 @@ wait_time = 30.0
 position = Vector2(960, 540)
 
 [node name="Background" parent="." instance=ExtResource("9_rl2xq")]
+visible = false
 z_index = -5
 position = Vector2(960, 120)
 scale = Vector2(3.75, 3.75)
