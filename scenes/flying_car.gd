@@ -11,6 +11,7 @@ var is_out_screen: bool
 func _ready() -> void:
 	super()
 	$Area2D.health = 200
+	$AudioStreamPlayer2D.play()
 	spriteContainer = $Sprite
 	var camera = get_viewport().get_camera_2d()
 	var viewport_rect = camera.get_viewport_rect()
