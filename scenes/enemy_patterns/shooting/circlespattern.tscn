@@ -1,13 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://jvttcvqmw1qh"]
 
-[ext_resource type="Texture2D" uid="uid://xn8hgfqcshgq" path="res://assets/SpaceShooter/Missiles/spaceMissiles_001.png" id="1_1my0i"]
 [ext_resource type="Script" path="res://scripts/components/shooting_pattern.gd" id="1_af748"]
+[ext_resource type="Texture2D" uid="uid://ccn3iljarx43b" path="res://assets/SpaceShooter/Missiles/spaceMissiles_022.png" id="2_11hvp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0lxbf"]
 
 [sub_resource type="BulletType" id="BulletType_3cqvv"]
 initialSpeed = 300.0
 _shape = SubResource("CircleShape2D_0lxbf")
+scale = 0.75
 acceleration = -100.0
 maxLifetime = 1.0
 
@@ -24,6 +25,6 @@ maxSpin = 10.0
 minSpin = -10.0
 textureRotation = 270.0
 z_index = 5
-texture = ExtResource("1_1my0i")
+texture = ExtResource("2_11hvp")
 
 [connection signal="bullet_hit" from="Spawner" to="." method="_on_bullet_hit"]

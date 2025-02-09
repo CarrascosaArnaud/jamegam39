@@ -8,6 +8,7 @@
 [sub_resource type="BulletType" id="BulletType_edptl"]
 initialSpeed = 300.0
 _shape = SubResource("CircleShape2D_a7l84")
+scale = 0.85
 mask = 5
 collideWithBodies = true
 
