@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://rwjnjimob1ya"]
+[gd_scene load_steps=2 format=3 uid="uid://dcovhe6kbw8q0"]
 
 [sub_resource type="GDScript" id="GDScript_xp6p5"]
 script/source = "extends CanvasLayer
@@ -30,8 +30,6 @@ grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 29
 text = "You'll take damage if you get hit by any enemy projectile, or if you enter in a collision with an enemy ship.
-
-If you shoot another enemy's bullet, their bullet will get destroyed but not yours.
 
 You'll have a second of invulnerability after each hit taken.
 
