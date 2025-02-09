@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://kxavomltxyti"]
+[gd_scene load_steps=22 format=3 uid="uid://kxavomltxyti"]
 
 [ext_resource type="PackedScene" uid="uid://b4k0a3wk2rowb" path="res://scenes/menu.tscn" id="1_0sxyr"]
 [ext_resource type="PackedScene" uid="uid://dk6vkqorptuc5" path="res://scenes/hud.tscn" id="2_dl72a"]
@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cr4uh4usbnc1" path="res://scenes/enemy_patterns/follow_path_circle_forward.tscn" id="5_4rfua"]
 [ext_resource type="PackedScene" uid="uid://pkiiaiycivlg" path="res://scenes/enemy_patterns/straight_line.tscn" id="6_eqba7"]
 [ext_resource type="PackedScene" uid="uid://jvttcvqmw1qh" path="res://scenes/enemy_patterns/shooting/circlespattern.tscn" id="6_mua22"]
-[ext_resource type="PackedScene" uid="uid://cbpfcm4610oej" path="res://scenes/enemy_patterns/bouncy_pattern.tscn" id="7_6ugo7"]
-[ext_resource type="PackedScene" uid="uid://c3yarm6een1xw" path="res://scenes/enemy_patterns/shooting/no_pattern.tscn" id="8_2c0ef"]
+[ext_resource type="PackedScene" uid="uid://uh6571fgaop7" path="res://scenes/enemy_patterns/bouncy_pattern.tscn" id="7_6ugo7"]
+[ext_resource type="PackedScene" path="res://scenes/enemy_patterns/shooting/no_pattern.tscn" id="8_2c0ef"]
 [ext_resource type="PackedScene" uid="uid://cbt3carvkp3ou" path="res://scenes/enemy_patterns/follow_player_pattern.tscn" id="8_peqjb"]
 [ext_resource type="PackedScene" uid="uid://bdx2pu10eplfa" path="res://scenes/enemy_patterns/shooting/shotgunpattern.tscn" id="9_18a3w"]
 [ext_resource type="PackedScene" uid="uid://bu1qiqgd3yqu7" path="res://scenes/enemy_patterns/slide_left_right_pattern.tscn" id="9_n53pv"]
@@ -18,14 +18,17 @@
 [ext_resource type="Texture2D" uid="uid://b1fog6votxi3b" path="res://assets/backgrounds/Fading_Sky-Sunset_04-512x512.png" id="11_q8ju4"]
 [ext_resource type="Texture2D" uid="uid://cg75e0fpgv7ol" path="res://assets/backgrounds/Fuzzy_Sky-Night_01-512x512.png" id="12_jrndf"]
 [ext_resource type="Texture2D" uid="uid://8t565pvh34ht" path="res://assets/backgrounds/Wispy_Sky-Sunset_01-512x512.png" id="15_jxe2r"]
+[ext_resource type="PackedScene" uid="uid://bqaqisgc6dvqv" path="res://scenes/explain_hud.tscn" id="19_k65p8"]
 
 [sub_resource type="GDScript" id="GDScript_36wy4"]
 script/source = "extends Node
 
 signal menu_game_over
+signal maybe_need_tuto
 signal update_score_hud
 
 var enemySpawnedPassed = 0
+var showTuto = true
 
 func inc_score():
 	$Player.score += 1
@@ -36,16 +39,26 @@ func game_over():
 	menu_game_over.emit($Player.score)
 	get_tree().call_group(\"enemy\", \"queue_free\")
 
-func new_game():
-	get_child(0).hide()
-	get_child(1).show()
+
+func maybe_tuto():
+	if showTuto :
+		maybe_need_tuto.emit()
+	else :
+		new_game()
+
+func new_game(value = false):
+	print('new game'+str(value))
+	if value == true:
+		showTuto = false
+	get_child(2).show()
 	$Player.score = 0
 	update_score_hud.emit(0)
 	$Player.start($StartPosition.position)
 	$EnemyTimer.start()
 
 func _on_menu_start_game():
-	new_game()
+	get_child(0).hide()
+	maybe_tuto()
 
 func _on_enemy_timer_timeout():
 	var enemy_spawn_location = $EnemyPath/EnemyPathSpawn
@@ -69,6 +82,9 @@ point_count = 5
 script = SubResource("GDScript_36wy4")
 
 [node name="Menu" parent="." instance=ExtResource("1_0sxyr")]
+
+[node name="ExplainHud" parent="." instance=ExtResource("19_k65p8")]
+visible = false
 
 [node name="HUD" parent="." instance=ExtResource("2_dl72a")]
 visible = false
@@ -101,10 +117,12 @@ position = Vector2(960, 120)
 scale = Vector2(3.75, 3.75)
 backgroundPic = Array[Texture2D]([ExtResource("10_0rku6"), ExtResource("11_q8ju4"), ExtResource("12_jrndf"), ExtResource("15_jxe2r")])
 
+[connection signal="maybe_need_tuto" from="." to="ExplainHud" method="_check"]
 [connection signal="menu_game_over" from="." to="Menu" method="_on_main_menu_game_over"]
 [connection signal="update_score_hud" from="." to="HUD" method="_score_update"]
 [connection signal="hide_hud_from_menu" from="Menu" to="HUD" method="_on_menu_hide_hud_from_menu"]
 [connection signal="start_game" from="Menu" to="." method="_on_menu_start_game"]
+[connection signal="start_game" from="ExplainHud" to="." method="new_game"]
 [connection signal="game_over" from="Player" to="." method="game_over"]
 [connection signal="life_update" from="Player" to="HUD" method="_on_player_life_update"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
