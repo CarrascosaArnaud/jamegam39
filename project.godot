@@ -10,9 +10,10 @@ config_version=5
 
 [application]
 
-config/name="JameGam39"
+config/name="Hullet Bell"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/image="res://assets/HulletBell.png"
 config/icon="res://icon.svg"
 
 [autoload]
@@ -23,9 +24,11 @@ AudioManager="*res://scenes/audio_manager.tscn"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="res://assets/cursor.png"
 
 [input]
 
@@ -80,3 +83,7 @@ Attack={
 [physics]
 
 2d/default_gravity_vector=Vector2(0, 0)
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
