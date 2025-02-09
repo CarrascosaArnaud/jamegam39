@@ -1,13 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnvjyjpwj4qao"]
+[gd_scene load_steps=7 format=3 uid="uid://dnvjyjpwj4qao"]
 
 [ext_resource type="Texture2D" uid="uid://dc2uwig4seb3w" path="res://assets/Ships/ship_H.png" id="1_cjqx6"]
 [ext_resource type="PackedScene" uid="uid://mcdmbi5qjthi" path="res://scenes/components/hitbox_component.tscn" id="2_agsip"]
 [ext_resource type="PackedScene" uid="uid://m2a3i1mwfuio" path="res://scenes/components/health_component.tscn" id="3_8wfff"]
+[ext_resource type="PackedScene" uid="uid://dr0peh3q051p0" path="res://scenes/bullet.tscn" id="4_nl3re"]
 
 [sub_resource type="GDScript" id="GDScript_quhyo"]
 script/source = "extends CharacterBody2D
 
 signal life_update
+signal game_over
 
 const SPEED = 2500.0
 var fire_rate = 0.3
@@ -69,17 +71,13 @@ func start(pos):
 	show()
 
 
-func _on_hitbox_component_area_entered(area):
-	print(area)
-	print(\"area\")
-
-
-func _on_hitbox_component_body_entered(body):
-	print(\"body\")
+func _on_health_component_player_dead():
+	game_over.emit()
+	hide()
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k7snd"]
-radius = 13.0
+radius = 24.0
 
 [node name="Player" type="CharacterBody2D"]
 script = SubResource("GDScript_quhyo")
@@ -94,11 +92,13 @@ texture = ExtResource("1_cjqx6")
 MAX_HEALTH = 10.0
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("2_agsip")]
-collision_mask = 6
+collision_mask = 2
 healthComponent = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_k7snd")
 
-[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
-[connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]
+[node name="Bullet" parent="." instance=ExtResource("4_nl3re")]
+
+[connection signal="player_dead" from="HealthComponent" to="." method="_on_health_component_player_dead"]
+[connection signal="area_entered" from="HitboxComponent" to="HitboxComponent" method="_on_area_entered"]

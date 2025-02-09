@@ -6,19 +6,16 @@
 [sub_resource type="GDScript" id="GDScript_1whcy"]
 script/source = "extends Control
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_player_life_update(value : int):
 	$LifeBar.value = value
+	
+	
+func _score_update(value : int):
+	$ScoreLabel.text = \"Score : \" + str(value)
+
+
+func _on_menu_hide_hud_from_menu():
+	self.hide()
 "
 
 [node name="HUD" type="Control"]
@@ -37,3 +34,12 @@ offset_bottom = 83.0
 value = 50.0
 texture_under = ExtResource("1_vbfsa")
 texture_progress = ExtResource("2_2jvvo")
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1691.0
+offset_top = 37.0
+offset_right = 1854.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 40
+text = "Score : X"

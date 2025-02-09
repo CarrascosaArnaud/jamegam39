@@ -5,7 +5,8 @@ extends Node2D
 @export var textures: Array[Texture2D]
 
 func _ready() -> void:
-	generate_random_enemy(Vector2(1500, 500))
+	generate_random_enemy(Vector2(1500, 500)) # <= A commenté si vous lancer depuis la scene Main
+	#pass
 
 func generate_random_enemy(position: Vector2 = self.position):
 	var rng = RandomNumberGenerator.new()

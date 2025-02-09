@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo7h2t2uk3w3g"]
+
+[sub_resource type="GDScript" id="GDScript_kbobu"]
+script/source = "extends CanvasLayer
+
+signal hide_hud
+signal retry
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	self.hide()
+
+func _on_retry_button_pressed():
+	self.hide()
+	retry.emit()
+
+
+func _on_menu_button_pressed():
+	self.hide()
+	hide_hud.emit()
+	get_parent().show()
+
+func get_score(value : int):
+	$Base/ScoreLabel.text = \"Your score : \" + str(value)
+"
+
+[node name="Menu_Gover" type="CanvasLayer"]
+script = SubResource("GDScript_kbobu")
+
+[node name="Base" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+metadata/_edit_lock_ = true
+
+[node name="MsgLabel" type="Label" parent="Base"]
+layout_mode = 0
+offset_left = 819.0
+offset_top = 297.0
+offset_right = 1117.0
+offset_bottom = 366.0
+theme_override_font_sizes/font_size = 50
+text = "Game Over !"
+
+[node name="ScoreLabel" type="Label" parent="Base"]
+layout_mode = 0
+offset_left = 592.0
+offset_top = 376.0
+offset_right = 1337.0
+offset_bottom = 445.0
+theme_override_font_sizes/font_size = 50
+text = "Your score : X"
+horizontal_alignment = 1
+
+[node name="RetryButton" type="Button" parent="Base"]
+clip_contents = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 0
+offset_left = 818.0
+offset_top = 495.0
+offset_right = 1118.0
+offset_bottom = 558.0
+theme_override_font_sizes/font_size = 40
+text = "Retry"
+
+[node name="MenuButton" type="Button" parent="Base"]
+clip_contents = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 0
+offset_left = 817.0
+offset_top = 581.0
+offset_right = 1117.0
+offset_bottom = 644.0
+theme_override_font_sizes/font_size = 40
+text = "Menu"
+
+[connection signal="pressed" from="Base/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Base/MenuButton" to="." method="_on_menu_button_pressed"]

@@ -5,7 +5,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_lam25"]
 radius = 94.0213
 
-[node name="bouncy_pattern" type="RigidBody2D"]
+[node name="bouncy_pattern" type="RigidBody2D" groups=["enemy"]]
 script = ExtResource("1_7r4wt")
 speed = 350
 direction = Vector2(-1, 0.5)
