@@ -1,7 +1,7 @@
 extends Enemy
 
 @export var speed = 1000
-@export var direction : Vector2 = Vector2(0, 1)
+@export var direction : Vector2 = Vector2(-1, 1)
 @export var follow_rotation : bool = true
 
 var state_bounce_x = null
@@ -26,6 +26,7 @@ func _ready() -> void:
 		is_out_screen = true
  
 func _physics_process(delta: float) -> void:
+	speed += 1000 * delta
 	self.linear_velocity = direction * speed * delta * 100
 
 func _process(delta: float) -> void:
@@ -57,3 +58,9 @@ func bounce(new_state_bounce: String, horizontal: bool):
 	else:
 		direction.y = -direction.y
 		state_bounce_y = new_state_bounce
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	var enemy = area.get_parent()
+	enemy = enemy if enemy is Enemy else enemy.get_parent()
+	enemy.queue_free()

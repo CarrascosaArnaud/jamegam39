@@ -7,8 +7,6 @@ var spriteContainer: Sprite2D = null
 var top_left
 var bottom_right
 
-var health: int = 2
-
 func _ready() -> void:
 	var camera = get_viewport().get_camera_2d()
 	var viewport_rect = camera.get_viewport_rect()

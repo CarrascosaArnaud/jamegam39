@@ -2,6 +2,7 @@ class_name PlayerHealthComponent
 extends HealthComponent
 
 signal player_dead
+var car = preload("res://scenes/flying_car.tscn")
 
 @onready var sprite: Sprite2D = $"../Sprite2D"
 
@@ -64,6 +65,11 @@ func damage(attack: int):
 	timer_invincibility.start()
 	
 	super(attack)
+	
+	if health == 3:
+		var c = car.instantiate() as Enemy
+		c.global_position = global_position
+		owner.owner.add_child(c)
 	
 	if health <= 0:
 		print(get_parent().name, " est mort")

@@ -5,7 +5,7 @@ extends HealthComponent
 @export var sprite: Sprite2D
 
 func _ready() -> void:
-	health = randi_range(1, 3)
+	health = 200
 
 func damage(attack: int):
 	super(attack)
