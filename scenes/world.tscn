@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3lgevswqjm2g"]
+[gd_scene load_steps=13 format=3 uid="uid://c3lgevswqjm2g"]
 
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_6wk8s"]
 [ext_resource type="PackedScene" uid="uid://dnvjyjpwj4qao" path="res://scenes/player.tscn" id="2_1mq22"]
 [ext_resource type="PackedScene" uid="uid://cbt3carvkp3ou" path="res://scenes/enemy_patterns/follow_player_pattern.tscn" id="2_dgh2c"]
 [ext_resource type="Script" path="res://scripts/components/enemy/enemy_builder.gd" id="2_dk8p7"]
 [ext_resource type="Texture2D" uid="uid://bkkgqxa4210hi" path="res://assets/Enemies/spaceShips_001.png" id="3_c4rb3"]
-[ext_resource type="PackedScene" uid="uid://dgr1vd36uh427" path="res://scenes/enemy_patterns/shooting/homingpattern.tscn" id="3_idr1h"]
+[ext_resource type="PackedScene" uid="uid://dgr1vd36uh427" path="res://scenes/enemy_patterns/shooting/classicpattern.tscn" id="3_idr1h"]
 [ext_resource type="Texture2D" uid="uid://etrg3tmm8iyx" path="res://assets/Enemies/spaceShips_002.png" id="5_o6p87"]
 [ext_resource type="PackedScene" uid="uid://jvttcvqmw1qh" path="res://scenes/enemy_patterns/shooting/circlespattern.tscn" id="5_q0i0r"]
 [ext_resource type="PackedScene" path="res://scenes/enemy_patterns/shooting/no_pattern.tscn" id="5_xg2f3"]
@@ -13,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dqv826a2xrk4i" path="res://scenes/background.tscn" id="11_um4ba"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_6wk8s")
 
 [node name="EnemyBuilder" type="Node2D" parent="."]
 position = Vector2(103, 78)
