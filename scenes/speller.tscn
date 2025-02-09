@@ -1,12 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dw3ivn5h1trex"]
+[gd_scene load_steps=3 format=3 uid="uid://dw3ivn5h1trex"]
 
 [ext_resource type="Script" path="res://Speller.gd" id="1_73ekw"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_spk2c"]
+font_size = 36
+
 [node name="Speller" type="Marker2D" node_paths=PackedStringArray("label")]
 script = ExtResource("1_73ekw")
-text = "An Auto-shot ?! NEVER JOHN FITZGERALD KENNEDY WOULD LET THIS HAPPEN !!"
+text = "An Auto-shoot ?! JOHN FITZGERALD KENNEDY WOULD NEVER HAVE LET THAT HAPPEN!!"
+apresAffichage = 5.0
 label = NodePath("Label")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_spk2c")
