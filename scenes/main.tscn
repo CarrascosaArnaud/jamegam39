@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b4k0a3wk2rowb" path="res://scenes/menu.tscn" id="1_0sxyr"]
 [ext_resource type="PackedScene" uid="uid://dk6vkqorptuc5" path="res://scenes/hud.tscn" id="2_dl72a"]
 [ext_resource type="PackedScene" uid="uid://dnvjyjpwj4qao" path="res://scenes/player.tscn" id="2_yxbxu"]
-[ext_resource type="PackedScene" path="res://scenes/enemyBuilder.tscn" id="3_v4had"]
+[ext_resource type="PackedScene" uid="uid://cm2k5f2q1p0si" path="res://scenes/enemyBuilder.tscn" id="3_v4had"]
 [ext_resource type="PackedScene" uid="uid://c3yarm6een1xw" path="res://scenes/enemy_patterns/shooting/no_pattern.tscn" id="5_pgojc"]
 [ext_resource type="PackedScene" uid="uid://jvttcvqmw1qh" path="res://scenes/enemy_patterns/shooting/circlespattern.tscn" id="6_0kvlr"]
 [ext_resource type="PackedScene" uid="uid://dgr1vd36uh427" path="res://scenes/enemy_patterns/shooting/homingpattern.tscn" id="7_jy3yk"]
@@ -40,6 +40,10 @@ func _on_enemy_timer_timeout():
 	var enemy_spawn_location = $EnemyPath/EnemyPathSpawn
 	enemy_spawn_location.progress_ratio = randf()
 	$EnemyBuilder.generate_random_enemy()
+
+
+func _on_enemy_timer_end_game_timeout():
+	$EnemyTimer.wait_time = 0.1
 "
 
 [sub_resource type="Curve2D" id="Curve2D_i7u81"]
@@ -74,6 +78,10 @@ position = Vector2(-8, -8)
 weapons = Array[PackedScene]([ExtResource("5_pgojc"), ExtResource("6_0kvlr"), ExtResource("7_jy3yk"), ExtResource("8_e5nrt")])
 
 [node name="EnemyTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="EnemyTimerEndGame" type="Timer" parent="."]
+wait_time = 30.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -85,3 +93,4 @@ position = Vector2(960, 540)
 [connection signal="game_over" from="Player" to="." method="game_over"]
 [connection signal="life_update" from="Player" to="HUD" method="_on_player_life_update"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
+[connection signal="timeout" from="EnemyTimerEndGame" to="." method="_on_enemy_timer_end_game_timeout"]
